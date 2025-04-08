@@ -1,118 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Etsy Scaling Revolution</title>
-   <script src="https://cdn.tailwindcss.com"></script>
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-   <style>
-       body {
-           font-family: 'Inter', sans-serif;
-           background-color: #F3F1E8;
-           color: #222222;
-           scroll-behavior: smooth;
-       }
-       .etsy-orange { background-color: #F56400; }
-       .etsy-orange-text { color: #F56400; }
-       .pulse {
-           animation: pulse 2s infinite;
-       }
-       @keyframes pulse {
-           0% { transform: scale(1); }
-           50% { transform: scale(1.05); }
-           100% { transform: scale(1); }
-       }
-       .transform-reveal {
-           opacity: 0;
-           transform: translateY(50px);
-           transition: all 0.8s ease;
-       }
-       .transform-reveal.active {
-           opacity: 1;
-           transform: translateY(0);
-       }
-   </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etsy Scaling Revolution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3F1E8;
+            color: #222222;
+            scroll-behavior: smooth;
+        }
+        .etsy-orange { background-color: #F56400; }
+        .etsy-orange-text { color: #F56400; }
+        #image-compare {
+            position: relative;
+            overflow: hidden;
+            cursor: col-resize;
+        }
+        #before-image, #after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: white;
+            transform: translateX(-50%);
+            cursor: col-resize;
+            z-index: 10;
+        }
+        #slider-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 <body class="antialiased">
-   <div class="container mx-auto px-4 max-w-6xl">
-       <!-- Rest of the previous landing page remains the same -->
+    <div class="container mx-auto px-4 max-w-6xl">
+        <!-- Hero Section -->
+        <header class="py-24 text-center">
+            <h1 class="text-7xl font-black mb-8 uppercase tracking-tight leading-tight">
+                YOUR DIGITAL 
+                <br>
+                <span class="etsy-orange-text">FREEDOM MACHINE</span>
+            </h1>
+            <h2 class="text-4xl font-bold mb-12 text-gray-700">
+                While Others Follow Rules, You Rewrite Them
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <p class="text-2xl mb-16 text-gray-600 font-medium">
+                    Transform Your Etsy Store from a Side Hustle into a Profit-Generating Weapon
+                </p>
+                
+                <a href="#" class="inline-block etsy-orange text-white px-16 py-6 text-2xl font-bold rounded-xl hover:scale-105 pulse shadow-2xl">
+                    INJECT MY BUSINESS WITH STEROIDS
+                </a>
+            </div>
+        </header>
 
-       <!-- Replace the previous gray box section with this -->
-       <section class="py-20 grid md:grid-cols-2 gap-12">
-           <div>
-               <h2 class="text-5xl font-black mb-8">AI Transforms. You Scale.</h2>
-               <div class="space-y-6 text-2xl">
-                   <div class="flex items-center space-x-4">
-                       <span class="text-4xl">🚀</span>
-                       <span>30 products. 1 hour. Zero manual work.</span>
-                   </div>
-                   <div class="flex items-center space-x-4">
-                       <span class="text-4xl">💰</span>
-                       <span>$20 vs $200. Pure profit acceleration.</span>
-                   </div>
-                   <div class="flex items-center space-x-4">
-                       <span class="text-4xl">🛡️</span>
-                       <span>Intelligent blocking prevention.</span>
-                   </div>
-               </div>
-           </div>
-           <div class="bg-gray-800 p-8 rounded-xl relative overflow-hidden">
-               <div id="image-compare" class="h-96 relative overflow-hidden">
-                   <div id="before-image" class="absolute inset-0">
-                       <img src="first-image-path.jpg" alt="Before" class="w-full h-full object-cover">
-                       <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded">BEFORE</div>
-                   </div>
-                   
-                   <div id="after-image" class="absolute inset-0">
-                       <img src="second-image-path.jpg" alt="After" class="w-full h-full object-cover">
-                       <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded">AFTER</div>
-                   </div>
-                   
-                   <div id="slider" class="absolute top-0 bottom-0 w-2 bg-white cursor-ew-resize" style="left: 50%;">
-                       <div class="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 bg-white rounded-full w-10 h-10 shadow-lg flex items-center justify-center">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                               <line x1="12" y1="5" x2="12" y2="19"></line>
-                               <polyline points="19 12 12 19 5 12"></polyline>
-                           </svg>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </section>
+        <!-- AI Transformation Section -->
+        <section class="py-20 grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-5xl font-black mb-8">AI Transforms. You Scale.</h2>
+                <div class="space-y-6 text-2xl">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-4xl">🚀</span>
+                        <span>30 products. 1 hour. Zero manual work.</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-4xl">💰</span>
+                        <span>$20 vs $200. Pure profit acceleration.</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-4xl">🛡️</span>
+                        <span>Intelligent blocking prevention.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-8 rounded-xl">
+                <div id="image-compare" class="h-96 relative">
+                    <img id="before-image" src="https://royazaria.github.io/etsy-landing/before.jpg" alt="Before Transformation">
+                    <img id="after-image" src="https://royazaria.github.io/etsy-landing/after.jpg" alt="After Transformation">
+                    <div id="slider">
+                        <div id="slider-handle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F56400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 left-4 z-20">
+                        <span class="bg-red-500 text-white px-2 py-1 rounded">BEFORE</span>
+                    </div>
+                    <div class="absolute top-4 right-4 z-20">
+                        <span class="bg-green-500 text-white px-2 py-1 rounded">AFTER</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-       <!-- Rest of the previous landing page remains the same -->
-   </div>
+        <!-- Testimonial Section -->
+        <section class="py-20 bg-black text-white">
+            <div class="text-center max-w-4xl mx-auto">
+                <blockquote class="text-3xl font-bold mb-10 italic">
+                    "I went from struggling to scale to running a digital empire. This isn't just a tool - it's my business's nuclear reactor."
+                </blockquote>
+                <p class="text-2xl mb-6">- Sarah K., Etsy Top Seller</p>
+                <div class="flex justify-center space-x-8 text-xl">
+                    <span>Increased Listings: +1400%</span>
+                    <span>Average Sales Boost: 320%</span>
+                </div>
+            </div>
+        </section>
 
-   <script>
-       const container = document.getElementById('image-compare');
-       const slider = document.getElementById('slider');
-       const beforeImage = document.getElementById('before-image');
+        <!-- Pricing Section -->
+        <section class="py-20">
+            <h2 class="text-5xl font-black text-center mb-16">Your Scaling Strategy</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="bg-white p-12 rounded-2xl shadow-xl text-center hover:scale-105 transition-transform">
+                    <h3 class="text-3xl font-bold mb-6">Simple</h3>
+                    <p class="text-6xl font-black etsy-orange-text mb-6">$1</p>
+                    <p class="text-xl">Good Enough Listing</p>
+                </div>
+                <div class="bg-white p-12 rounded-2xl shadow-xl text-center hover:scale-105 transition-transform">
+                    <h3 class="text-3xl font-bold mb-6">Medium</h3>
+                    <p class="text-6xl font-black etsy-orange-text mb-6">$2</p>
+                    <p class="text-xl">Studio Quality Magic</p>
+                </div>
+                <div class="bg-white p-12 rounded-2xl shadow-xl text-center hover:scale-105 transition-transform">
+                    <h3 class="text-3xl font-bold mb-6">High</h3>
+                    <p class="text-6xl font-black etsy-orange-text mb-6">$5</p>
+                    <p class="text-xl">Authenticity on Steroids</p>
+                </div>
+            </div>
+            <div class="text-center mt-16">
+                <p class="etsy-orange-text font-bold text-2xl">🔥 LIMITED TIME: First 100 Users Get 5 Free Tokens</p>
+            </div>
+        </section>
 
-       slider.addEventListener('mousedown', startSlide);
-       document.addEventListener('mousemove', slide);
-       document.addEventListener('mouseup', stopSlide);
+        <!-- Final CTA -->
+        <section class="py-20 text-center">
+            <h2 class="text-6xl font-black mb-12">Ready to Destroy Your Competition?</h2>
+            <a href="#" class="inline-block etsy-orange text-white px-20 py-8 text-3xl font-bold rounded-xl hover:scale-105 shadow-2xl">
+                INJECT MY PROFIT MACHINE
+            </a>
+            <p class="mt-8 text-xl text-gray-600">No spam. No bullshit. Just pure Etsy scaling tactics.</p>
+        </section>
+    </div>
 
-       function startSlide(e) {
-           e.preventDefault();
-           container.style.cursor = 'ew-resize';
-       }
+    <script>
+        const container = document.getElementById('image-compare');
+        const slider = document.getElementById('slider');
+        const beforeImage = document.getElementById('before-image');
+        const afterImage = document.getElementById('after-image');
 
-       function slide(e) {
-           if (!container.style.cursor) return;
-           
-           const containerWidth = container.offsetWidth;
-           let slidePosition = e.clientX - container.getBoundingClientRect().left;
-           
-           slidePosition = Math.max(0, Math.min(containerWidth, slidePosition));
-           
-           slider.style.left = `${slidePosition}px`;
-           beforeImage.style.clipPath = `inset(0 ${containerWidth - slidePosition}px 0 0)`;
-       }
+        function setImageClip(x) {
+            beforeImage.style.clipPath = `inset(0 ${container.offsetWidth - x}px 0 0)`;
+        }
 
-       function stopSlide() {
-           container.style.cursor = '';
-       }
-   </script>
+        slider.addEventListener('mousedown', startSlide);
+        document.addEventListener('mousemove', slide);
+        document.addEventListener('mouseup', stopSlide);
+
+        function startSlide(e) {
+            e.preventDefault();
+            document.addEventListener('mousemove', slide);
+        }
+
+        function slide(e) {
+            const containerRect = container.getBoundingClientRect();
+            const x = e.clientX - containerRect.left;
+            
+            if (x >= 0 && x <= containerRect.width) {
+                slider.style.left = `${x}px`;
+                setImageClip(x);
+            }
+        }
+
+        function stopSlide() {
+            document.removeEventListener('mousemove', slide);
+        }
+
+        // Initial setup
+        setImageClip(container.offsetWidth / 2);
+    </script>
 </body>
 </html>
