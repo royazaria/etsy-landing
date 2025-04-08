@@ -3,151 +3,141 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inject My Profit Machine</title>
+  <title>Inject My Etsy Machine</title>
   <style>
     :root {
       --primary: #f1641e; /* Etsy orange */
-      --bg-light: #fffdfb;
+      --background: #fffdfb;
+      --accent: #fef3ec;
       --text-dark: #333;
       --text-light: #666;
-      --accent: #ffeadd;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg-light);
+      background-color: var(--background);
       color: var(--text-dark);
-      line-height: 1.6;
-      padding: 0 20px;
-    }
-
-    header {
       text-align: center;
-      padding: 60px 0 30px;
-      animation: fadeInUp 1s ease forwards;
+      padding: 40px 20px;
     }
 
     header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
+      font-size: 2.7rem;
+      margin-bottom: 20px;
+      color: var(--text-dark);
     }
 
     header p {
       font-size: 1.2rem;
       color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto 40px;
     }
 
     .cta-button {
       background-color: var(--primary);
-      color: white;
-      padding: 15px 30px;
+      color: #fff;
       border: none;
-      border-radius: 8px;
-      font-size: 1.2rem;
+      padding: 18px 36px;
+      font-size: 1.3rem;
+      border-radius: 10px;
       cursor: pointer;
-      animation: fadeInUp 1.4s ease forwards, pulse 2.5s infinite;
-      transition: background-color 0.3s ease;
-      margin-top: 30px;
+      animation: pulse 2.2s infinite;
+      transition: background 0.3s ease;
     }
 
     .cta-button:hover {
-      background-color: #c65314;
+      background-color: #d95417;
     }
 
-    section.features {
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .features {
+      margin-top: 60px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 30px;
-      padding: 50px 0;
-      text-align: center;
+      padding: 0 10px;
     }
 
-    .feature {
-      background: var(--accent);
+    .feature-card {
+      background-color: var(--accent);
       padding: 25px;
       border-radius: 12px;
-      animation: fadeInUp 1.2s ease forwards;
     }
 
-    .feature h3 {
-      margin-top: 15px;
+    .feature-card h3 {
       font-size: 1.1rem;
+      margin-bottom: 10px;
     }
 
-    section.visual-preview {
-      text-align: center;
-      padding: 50px 0;
-    }
-
-    section.visual-preview p {
+    .visual-sample {
+      margin: 60px auto;
+      font-style: italic;
       color: var(--text-light);
     }
 
     footer {
-      text-align: center;
-      padding: 50px 0;
+      margin: 60px 0 20px;
     }
 
+    /* Popup Styles */
     .popup {
       display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 9999;
+      z-index: 999;
     }
 
     .popup-content {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
+      background-color: white;
+      padding: 40px 30px;
+      border-radius: 12px;
       width: 90%;
       max-width: 400px;
-      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
 
     .popup-content h2 {
+      font-size: 1.5rem;
       margin-bottom: 20px;
     }
 
     .popup-content input {
       width: 100%;
       padding: 12px;
-      margin-bottom: 15px;
+      margin: 10px 0;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-size: 1rem;
     }
 
     .popup-content button {
       background-color: var(--primary);
       color: white;
-      padding: 12px;
       width: 100%;
+      padding: 14px;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 6px;
-      font-size: 1rem;
+      border-radius: 8px;
+      margin-top: 10px;
       cursor: pointer;
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
     }
 
     @media (max-width: 600px) {
@@ -155,13 +145,9 @@
         font-size: 2rem;
       }
 
-      header p {
-        font-size: 1rem;
-      }
-
       .cta-button {
-        font-size: 1rem;
-        padding: 12px 20px;
+        font-size: 1.1rem;
+        padding: 14px 28px;
       }
     }
   </style>
@@ -169,45 +155,47 @@
 <body>
 
   <header>
-    <h1>Launch Your Etsy Empire Today 🚀</h1>
-    <p>Automate your entire Etsy product creation with just one click.</p>
-    <button class="cta-button" onclick="openPopup()">Inject My Profit Machine</button>
+    <h1>Inject Your Etsy Machine Now</h1>
+    <p>
+      You’re one click away from fully automating your Etsy product creation.<br>
+      No tech. No waiting. Just profits.
+    </p>
+    <button class="cta-button" onclick="openPopup()">Inject My Etsy Machine</button>
   </header>
 
   <section class="features">
-    <div class="feature">
-      <h3>⚡ 60-second Product Creation</h3>
-      <p>From images to SEO tags – all done instantly.</p>
+    <div class="feature-card">
+      <h3>⚡ Full Product in 60 Seconds</h3>
+      <p>Images, titles, tags & descriptions – done by AI.</p>
     </div>
-    <div class="feature">
-      <h3>🤖 AI-Generated Everything</h3>
-      <p>No skills required. Just click & sell.</p>
+    <div class="feature-card">
+      <h3>🤖 Zero Work, Maximum Output</h3>
+      <p>One button. One result. Thousands of possibilities.</p>
     </div>
-    <div class="feature">
-      <h3>🎯 Built for Real Etsy Sellers</h3>
-      <p>Created by pros, for pros (and newbies too).</p>
+    <div class="feature-card">
+      <h3>📈 Built for Etsy Domination</h3>
+      <p>SEO-powered, trend-driven & proven to convert.</p>
     </div>
-    <div class="feature">
-      <h3>📈 Optimized for Sales</h3>
-      <p>Backed by real market data, not guesswork.</p>
+    <div class="feature-card">
+      <h3>🧠 Smart. Fast. Human-Level</h3>
+      <p>Feels like you. Works like 10 of you.</p>
     </div>
   </section>
 
-  <section class="visual-preview">
-    <h2>👀 Sneak Peek Coming Soon</h2>
-    <p>Real product examples will be added here.</p>
-  </section>
+  <div class="visual-sample">
+    👀 Visual sample coming soon – this machine doesn’t need hype. It just works.
+  </div>
 
   <footer>
-    <button class="cta-button" onclick="openPopup()">Inject My Profit Machine</button>
+    <button class="cta-button" onclick="openPopup()">Inject My Etsy Machine</button>
   </footer>
 
   <div class="popup" id="popup">
     <div class="popup-content">
-      <h2>You're One Step Away 🚀</h2>
+      <h2>You're Ready. Let's Go 🚀</h2>
       <input type="text" placeholder="Your Name">
       <input type="email" placeholder="Email Address">
-      <button>Send Me In</button>
+      <button>Activate My Machine</button>
     </div>
   </div>
 
