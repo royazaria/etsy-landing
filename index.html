@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inject My Etsy Machine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #f1641e; /* Etsy orange */
-      --background: #fffdfb;
+      --primary: #f1641e;
+      --bg: #fffdfb;
       --accent: #fef3ec;
-      --text-dark: #333;
-      --text-light: #666;
+      --text: #2c2c2c;
+      --subtle: #777;
     }
 
     * {
@@ -19,41 +20,160 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background);
-      color: var(--text-dark);
+    html, body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 80px 20px 60px;
       text-align: center;
-      padding: 40px 20px;
+      background: linear-gradient(135deg, #fff6f1, #fef3ec);
+      animation: fadeIn 1s ease-out;
     }
 
     header h1 {
-      font-size: 2.7rem;
+      font-size: 3rem;
+      font-weight: 800;
       margin-bottom: 20px;
-      color: var(--text-dark);
     }
 
     header p {
       font-size: 1.2rem;
-      color: var(--text-light);
-      max-width: 600px;
-      margin: 0 auto 40px;
+      color: var(--subtle);
+      max-width: 650px;
+      margin: 0 auto;
     }
 
-    .cta-button {
+    .cta {
+      margin-top: 40px;
+      padding: 18px 40px;
       background-color: var(--primary);
-      color: #fff;
+      color: white;
       border: none;
-      padding: 18px 36px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      font-weight: 600;
       border-radius: 10px;
       cursor: pointer;
-      animation: pulse 2.2s infinite;
-      transition: background 0.3s ease;
+      animation: pulse 2s infinite;
     }
 
-    .cta-button:hover {
-      background-color: #d95417;
+    section.gallery {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .gallery-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+    }
+
+    section.features {
+      padding: 60px 20px;
+      background-color: #fff6f1;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .feature {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .popup-content h2 {
+      margin-bottom: 20px;
+    }
+
+    .popup-content input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .popup-content button {
+      background: var(--primary);
+      color: white;
+      padding: 14px;
+      border: none;
+      width: 100%;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
     }
 
     @keyframes pulse {
@@ -62,104 +182,19 @@
       100% { transform: scale(1); }
     }
 
-    .features {
-      margin-top: 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 30px;
-      padding: 0 10px;
-    }
-
-    .feature-card {
-      background-color: var(--accent);
-      padding: 25px;
-      border-radius: 12px;
-    }
-
-    .feature-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-    }
-
-    .visual-sample {
-      margin: 60px auto;
-      font-style: italic;
-      color: var(--text-light);
-    }
-
-    footer {
-      margin: 60px 0 20px;
-    }
-
-    /* Popup Styles */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.85);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
-
-    .popup-content {
-      background-color: white;
-      padding: 40px 30px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      z-index: 1000;
-    }
-
-    .popup-content h2 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-    }
-
-    .popup-content input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
-    .popup-content button {
-      background-color: var(--primary);
-      color: white;
-      width: 100%;
-      padding: 14px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 8px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-
-    /* Blur background when popup is open */
-    body.blurred::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(6px);
-      background-color: rgba(0, 0, 0, 0.4);
-      z-index: 998;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
 
-      .cta-button {
-        font-size: 1.1rem;
+      .cta {
         padding: 14px 28px;
+        font-size: 1rem;
       }
     }
   </style>
@@ -168,59 +203,63 @@
 
   <header>
     <h1>Inject Your Etsy Machine Now</h1>
-    <p>
-      You’re one click away from fully automating your Etsy product creation.<br>
-      No tech. No waiting. Just profits.
-    </p>
-    <button class="cta-button" onclick="openPopup()">Inject My Etsy Machine</button>
+    <p>Get instant, optimized Etsy product listings – titles, tags, images, and descriptions – with one powerful click.</p>
+    <button class="cta" onclick="openPopup()">Inject My Profit Machine</button>
   </header>
 
-  <section class="features">
-    <div class="feature-card">
-      <h3>⚡ Full Product in 60 Seconds</h3>
-      <p>Images, titles, tags & descriptions – done by AI.</p>
-    </div>
-    <div class="feature-card">
-      <h3>🤖 Zero Work, Maximum Output</h3>
-      <p>One button. One result. Thousands of possibilities.</p>
-    </div>
-    <div class="feature-card">
-      <h3>📈 Built for Etsy Domination</h3>
-      <p>SEO-powered, trend-driven & proven to convert.</p>
-    </div>
-    <div class="feature-card">
-      <h3>🧠 Smart. Fast. Human-Level</h3>
-      <p>Feels like you. Works like 10 of you.</p>
+  <section class="gallery">
+    <h2 class="gallery-title">🧠 Real Results from the Machine</h2>
+    <div class="gallery-grid">
+      <img src="https://royazaria.github.io/etsy-landing/images/result1.jpg" alt="Generated Example 1" />
+      <img src="https://royazaria.github.io/etsy-landing/images/result2.jpg" alt="Generated Example 2" />
+      <img src="https://royazaria.github.io/etsy-landing/images/result3.jpg" alt="Generated Example 3" />
+      <img src="https://royazaria.github.io/etsy-landing/images/result4.jpg" alt="Generated Example 4" />
     </div>
   </section>
 
-  <div class="visual-sample">
-    👀 Visual sample coming soon – this machine doesn’t need hype. It just works.
-  </div>
+  <section class="features">
+    <h2>Why Sellers Love This Tool</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>⚡ 60-Second Launch</h3>
+        <p>From nothing to full Etsy product in a single click.</p>
+      </div>
+      <div class="feature">
+        <h3>📈 SEO-Powered Listings</h3>
+        <p>Optimized for visibility, based on real market data.</p>
+      </div>
+      <div class="feature">
+        <h3>🖼️ Stunning AI Images</h3>
+        <p>Product photos that look like a million bucks.</p>
+      </div>
+      <div class="feature">
+        <h3>💰 Built to Convert</h3>
+        <p>Designed by Etsy pros to drive real sales.</p>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <button class="cta-button" onclick="openPopup()">Inject My Etsy Machine</button>
+    <button class="cta" onclick="openPopup()">Inject My Profit Machine</button>
   </footer>
 
   <div class="popup" id="popup">
     <div class="popup-content">
-      <h2>You're Ready. Let's Go 🚀</h2>
-      <input type="text" placeholder="Your Name">
-      <input type="email" placeholder="Email Address">
-      <button onclick="finalStep()">Activate My Machine</button>
+      <h2>You're Almost In 🚀</h2>
+      <input type="text" placeholder="Your Name" />
+      <input type="email" placeholder="Your Email" />
+      <button onclick="finalStep()">Activate Machine</button>
     </div>
   </div>
 
   <script>
     function openPopup() {
       document.getElementById("popup").style.display = "flex";
-      document.body.classList.add('blurred');
     }
 
     function finalStep() {
-      document.querySelector('.popup-content').innerHTML = "<h2>You're in! Your machine is now warming up... 🧠⚙️</h2>";
+      document.querySelector('.popup-content').innerHTML = "<h2>You're in! Machine is now warming up... 🧠⚙️</h2>";
     }
   </script>
-
 </body>
 </html>
