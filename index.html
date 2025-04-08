@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inject My Etsy Machine</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #f1641e;
-      --bg: #fffdfb;
+      --primary: #f1641e; /* Etsy orange */
+      --background: #fffdfb;
       --accent: #fef3ec;
-      --text: #2c2c2c;
-      --subtle: #777;
+      --text-dark: #333;
+      --text-light: #666;
+      --button-color: #d95417;
     }
 
     * {
@@ -20,31 +20,33 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--background);
+      color: var(--text-dark);
+      text-align: center;
+      padding: 20px;
+      transition: background 0.5s ease-in-out;
     }
 
     header {
-      padding: 80px 20px 60px;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, var(--background), var(--accent));
       text-align: center;
-      background: linear-gradient(135deg, #fff6f1, #fef3ec);
-      animation: fadeIn 1s ease-out;
+      animation: fadeInUp 1s ease forwards;
     }
 
     header h1 {
       font-size: 3rem;
-      font-weight: 800;
+      font-weight: bold;
       margin-bottom: 20px;
     }
 
     header p {
       font-size: 1.2rem;
-      color: var(--subtle);
+      color: var(--text-light);
       max-width: 650px;
-      margin: 0 auto;
+      margin: 0 auto 30px;
     }
 
     .cta {
@@ -58,21 +60,25 @@
       border-radius: 10px;
       cursor: pointer;
       animation: pulse 2s infinite;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta:hover {
+      background-color: var(--button-color);
     }
 
     section.gallery {
       padding: 60px 20px;
-      text-align: center;
     }
 
     .gallery-title {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 30px;
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       max-width: 1200px;
       margin: 0 auto;
@@ -86,17 +92,16 @@
     }
 
     .gallery-grid img:hover {
-      transform: scale(1.02);
+      transform: scale(1.05);
     }
 
     section.features {
       padding: 60px 20px;
-      background-color: #fff6f1;
-      text-align: center;
+      background-color: var(--accent);
     }
 
     .features h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 40px;
     }
 
@@ -121,8 +126,8 @@
     }
 
     .feature h3 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
     }
 
     footer {
@@ -130,6 +135,7 @@
       padding: 60px 20px;
     }
 
+    /* Popup Styles */
     .popup {
       display: none;
       position: fixed;
@@ -143,7 +149,7 @@
     }
 
     .popup-content {
-      background: white;
+      background-color: white;
       padding: 40px 30px;
       border-radius: 12px;
       width: 90%;
@@ -182,7 +188,7 @@
       100% { transform: scale(1); }
     }
 
-    @keyframes fadeIn {
+    @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
@@ -193,8 +199,8 @@
       }
 
       .cta {
-        padding: 14px 28px;
         font-size: 1rem;
+        padding: 12px 28px;
       }
     }
   </style>
@@ -202,9 +208,12 @@
 <body>
 
   <header>
-    <h1>Inject Your Etsy Machine Now</h1>
-    <p>Get instant, optimized Etsy product listings – titles, tags, images, and descriptions – with one powerful click.</p>
-    <button class="cta" onclick="openPopup()">Inject My Profit Machine</button>
+    <h1>Launch Your Etsy Empire Today 🚀</h1>
+    <p>
+      Ready to skyrocket your sales with our automated Etsy product generator? <br>
+      One click. One result. Thousands of possibilities.
+    </p>
+    <button class="cta" onclick="openPopup()">Inject My Etsy Machine</button>
   </header>
 
   <section class="gallery">
@@ -218,37 +227,37 @@
   </section>
 
   <section class="features">
-    <h2>Why Sellers Love This Tool</h2>
+    <h2>Why Etsy Sellers Love This Tool</h2>
     <div class="features-grid">
       <div class="feature">
-        <h3>⚡ 60-Second Launch</h3>
-        <p>From nothing to full Etsy product in a single click.</p>
+        <h3>⚡ 60-Second Product Creation</h3>
+        <p>From idea to full product in less than a minute.</p>
       </div>
       <div class="feature">
-        <h3>📈 SEO-Powered Listings</h3>
-        <p>Optimized for visibility, based on real market data.</p>
+        <h3>🎯 SEO-Powered Listings</h3>
+        <p>Generated with real-time search data to drive traffic.</p>
       </div>
       <div class="feature">
-        <h3>🖼️ Stunning AI Images</h3>
-        <p>Product photos that look like a million bucks.</p>
+        <h3>🖼️ Stunning AI-Generated Photos</h3>
+        <p>Get professional images without a photographer.</p>
       </div>
       <div class="feature">
-        <h3>💰 Built to Convert</h3>
-        <p>Designed by Etsy pros to drive real sales.</p>
+        <h3>💰 Fully Automated</h3>
+        <p>Focus on selling – let the machine do the rest.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    <button class="cta" onclick="openPopup()">Inject My Profit Machine</button>
+    <button class="cta" onclick="openPopup()">Inject My Etsy Machine</button>
   </footer>
 
   <div class="popup" id="popup">
     <div class="popup-content">
-      <h2>You're Almost In 🚀</h2>
-      <input type="text" placeholder="Your Name" />
-      <input type="email" placeholder="Your Email" />
-      <button onclick="finalStep()">Activate Machine</button>
+      <h2>You're Almost There 🚀</h2>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Email Address">
+      <button onclick="finalStep()">Activate My Machine</button>
     </div>
   </div>
 
@@ -258,7 +267,7 @@
     }
 
     function finalStep() {
-      document.querySelector('.popup-content').innerHTML = "<h2>You're in! Machine is now warming up... 🧠⚙️</h2>";
+      document.querySelector('.popup-content').innerHTML = "<h2>You're in! Your machine is now warming up... 🧠⚙️</h2>";
     }
   </script>
 </body>
