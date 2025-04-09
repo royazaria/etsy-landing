@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Etsy AI: Your Profit Machine</title>
+  <title>EtsyPro AI | Professional Etsy Listings in Minutes</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- אפקט לפני/אחרי -->
-  <link rel="stylesheet" href="twentytwenty.css">
+  <!-- Before/After Effect -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/css/twentytwenty.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="jquery.event.move.js"></script>
-  <script src="jquery.twentytwenty.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.event.move/2.0.0/jquery.event.move.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/js/jquery.twentytwenty.min.js"></script>
 
   <!-- Typed.js -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
@@ -34,136 +34,284 @@
       color: var(--etsy-orange);
       font-weight: bold;
     }
-    .ai-transform {
-      transition: all 0.5s ease;
+    .feature-card {
+      transition: all 0.3s ease;
       transform-origin: center;
     }
-    .ai-transform:hover {
-      transform: scale(1.05) rotate(2deg);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    .testimonial-card {
+      transition: all 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: scale(1.02);
+    }
+    .pricing-card {
+      transition: all 0.3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.08);
+    }
+    .pricing-card.featured {
+      position: relative;
+      border: 2px solid var(--etsy-orange);
+    }
+    .pricing-card.featured::before {
+      content: "Most Popular";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--etsy-orange);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      white-space: nowrap;
     }
   </style>
 </head>
 
 <body class="bg-gray-50 text-gray-900">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm py-4 sticky top-0 z-50">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      <div class="flex items-center">
+        <span class="text-2xl font-bold text-[#F56400]">EtsyPro</span>
+        <span class="text-xl font-bold ml-1">AI</span>
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a href="#features" class="font-medium hover:text-[#F56400] transition-colors">Features</a>
+        <a href="#how-it-works" class="font-medium hover:text-[#F56400] transition-colors">How It Works</a>
+        <a href="#pricing" class="font-medium hover:text-[#F56400] transition-colors">Pricing</a>
+      </div>
+      <a href="#early-access" class="bg-[#F56400] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#E45A00] transition-colors">
+        Get Early Access
+      </a>
+    </div>
+  </nav>
+
   <!-- Hero Section -->
-  <section class="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
+  <section class="py-20 md:py-32 flex items-center justify-center px-6 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-[#F3F1E8] to-white opacity-50"></div>
     <div class="relative z-10 text-center max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-6xl lg:text-8xl font-black mb-6 uppercase tracking-tight break-words">
+      <span class="text-[#F56400] font-semibold">Introducing the Etsy Seller's Secret Weapon</span>
+      <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 tracking-tight">
         <span id="typed-headline"></span>
       </h1>
-      <p class="text-lg md:text-2xl mb-12 text-gray-700 font-medium max-w-full break-normal">
-        Transform Your Etsy Store from a Side Hustle into a Profit-Generating Weapon
+      <p class="text-lg md:text-2xl mb-12 text-gray-700 font-medium max-w-3xl mx-auto">
+        Transform your product photos into professional studio-quality listings with AI-optimized content, targeted SEO, and perfect keywords - all in minutes.
       </p>
-      <a href="#signup-form" class="bg-[#F56400] text-white px-10 sm:px-6 py-4 text-xl sm:text-lg font-bold rounded-xl hover:scale-105 transition-transform">
-        UNLOCK MY POTENTIAL
-      </a>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#early-access" class="bg-[#F56400] text-white px-8 py-4 text-lg font-bold rounded-xl hover:bg-[#E45A00] transition-colors">
+          Get Early Access
+        </a>
+        <a href="#how-it-works" class="bg-white text-gray-800 px-8 py-4 text-lg font-bold rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">
+          See How It Works
+        </a>
+      </div>
+      <p class="text-gray-500 mt-6">Join 100+ Etsy sellers already on the waiting list</p>
     </div>
   </section>
 
-  <!-- AI Demonstration -->
-  <section class="py-24 bg-black text-white px-4">
+  <!-- Social Proof -->
+  <section class="py-10 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
+        <span class="text-gray-500 font-medium">Trusted by sellers with</span>
+        <div class="flex items-center">
+          <span class="text-2xl font-bold text-gray-700">₪1,000,000+</span>
+          <span class="ml-2 text-gray-500">in combined Etsy sales</span>
+        </div>
+        <div class="h-6 border-r border-gray-300 hidden md:block"></div>
+        <div class="flex items-center">
+          <span class="text-2xl font-bold text-gray-700">10+</span>
+          <span class="ml-2 text-gray-500">successful stores</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20 bg-gray-50 px-6">
     <div class="container mx-auto max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Everything You Need for Etsy Success</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-sm feature-card">
+          <div class="w-14 h-14 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#F56400]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Professional Studio Images</h3>
+          <p class="text-gray-600">Transform basic product photos into studio-quality images with perfect lighting, models, and lifestyle settings.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-sm feature-card">
+          <div class="w-14 h-14 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#F56400]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Optimized SEO & Keywords</h3>
+          <p class="text-gray-600">Leverage real-time Etsy market data to identify the most effective keywords that drive traffic to your listings.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-sm feature-card">
+          <div class="w-14 h-14 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#F56400]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Compelling Product Descriptions</h3>
+          <p class="text-gray-600">Generate captivating titles and descriptions that convert browsers into buyers, customized for your product category.</p>
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 mt-8">
+        <div class="bg-white p-8 rounded-xl shadow-sm feature-card">
+          <div class="w-14 h-14 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#F56400]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Time & Cost Efficiency</h3>
+          <p class="text-gray-600">Create 30+ professional listings in under an hour. Save hundreds on professional photography and copywriting.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-sm feature-card">
+          <div class="w-14 h-14 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#F56400]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Etsy-Compliant Results</h3>
+          <p class="text-gray-600">Our system is designed to create unique, authentic content that meets Etsy's guidelines while maximizing your visibility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-20 bg-white px-6">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">How It Works</h2>
+      <p class="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">Four simple steps to transform your basic product into a professional, optimized Etsy listing</p>
+      
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <h2 class="text-4xl sm:text-3xl font-black mb-8">AI Transforms. You Scale.</h2>
-          <div class="space-y-6 text-xl sm:text-lg">
-            <div class="flex items-center space-x-4 ai-transform">
-              <span class="text-3xl">🚀</span>
-              <span>30 Products. 1 Hour. Zero Manual Work.</span>
+          <div class="mb-12">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-[#F56400] text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-4">1</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Upload Your Product Photo</h3>
+                <p class="text-gray-600">Start with a simple photo of your product against any background.</p>
+              </div>
             </div>
-            <div class="flex items-center space-x-4 ai-transform">
-              <span class="text-3xl">💰</span>
-              <span>$20 vs $200. Pure Profit Acceleration.</span>
+          </div>
+          
+          <div class="mb-12">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-[#F56400] text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-4">2</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Add Basic Product Details</h3>
+                <p class="text-gray-600">Specify your product category, materials, and dimensions.</p>
+              </div>
             </div>
-            <div class="flex items-center space-x-4 ai-transform">
-              <span class="text-3xl">🛡️</span>
-              <span>Intelligent Etsy Blocking Prevention.</span>
+          </div>
+          
+          <div class="mb-12">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-[#F56400] text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-4">3</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Select Your Output Quality</h3>
+                <p class="text-gray-600">Choose from standard, professional, or premium quality levels based on your needs.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-[#F56400] text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-4">4</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Receive Your Complete Listing</h3>
+                <p class="text-gray-600">Get professional product images, SEO-optimized title, description, and keywords.</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="bg-gray-800 p-4 rounded-xl">
-          <div class="twentytwenty-container w-full max-w-md mx-auto">
-            <img src="before.jpg" />
-            <img src="after.jpg" />
+        
+        <div class="bg-gray-100 p-4 rounded-xl shadow-sm">
+          <div class="twentytwenty-container w-full">
+            <img src="before.jpg" alt="Basic product photo" />
+            <img src="after.jpg" alt="Professional studio quality photo" />
+          </div>
+          <div class="bg-white mt-4 p-4 rounded-lg">
+            <h4 class="font-bold text-lg mb-2 text-[#F56400]">Generated Content Example:</h4>
+            <p class="font-medium mb-1">Title: Handcrafted Ceramic Coffee Mug | Modern Minimalist Design | Perfect Housewarming Gift</p>
+            <p class="text-sm text-gray-500 mb-2">Keywords: ceramic mug, handmade pottery, minimalist design, coffee lover gift</p>
+            <p class="text-xs text-gray-600">Description: Elevate your morning routine with this handcrafted ceramic coffee mug. Each piece is carefully made using premium clay and finished with a food-safe glaze. The modern minimalist design makes it a perfect addition to any kitchen...</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing Section -->
-  <section class="py-24 bg-[#F56400] text-white px-4">
-    <div class="container mx-auto max-w-6xl text-center">
-      <h2 class="text-5xl sm:text-4xl font-black mb-16">Your Scaling Arsenal</h2>
-      <div class="grid md:grid-cols-3 gap-12">
-        <div class="bg-white text-black p-8 rounded-2xl ai-transform">
-          <h3 class="text-2xl font-bold mb-6">Simple</h3>
-          <p class="text-5xl font-black text-[#F56400] mb-6">$1</p>
-          <p class="text-xl">Good Enough Listing</p>
+  <!-- Testimonials -->
+  <section class="py-20 bg-gray-50 px-6">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">What Our Beta Users Say</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-sm testimonial-card">
+          <div class="flex items-center mb-4">
+            <div class="text-[#F56400]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6">"Since using this tool, my conversion rate is up 37%. The product images look like I hired a professional photographer and the descriptions are spot on."</p>
+          <div class="flex items-center">
+            <div class="h-10 w-10 bg-gray-200 rounded-full mr-3"></div>
+            <div>
+              <p class="font-medium">Michal K.</p>
+              <p class="text-gray-500 text-sm">Jewelry Designer</p>
+            </div>
+          </div>
         </div>
-        <div class="bg-white text-black p-8 rounded-2xl ai-transform">
-          <h3 class="text-2xl font-bold mb-6">Medium</h3>
-          <p class="text-5xl font-black text-[#F56400] mb-6">$2</p>
-          <p class="text-xl">Studio Quality Magic</p>
-        </div>
-        <div class="bg-white text-black p-8 rounded-2xl ai-transform">
-          <h3 class="text-2xl font-bold mb-6">High</h3>
-          <p class="text-5xl font-black text-[#F56400] mb-6">$5</p>
-          <p class="text-xl">Authenticity on Steroids</p>
-        </div>
-      </div>
-      <div class="mt-16 text-2xl font-bold">
-        🔥 First 100 Users: 5 Free Tokens
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="py-24 bg-black text-white px-4">
-    <div class="container mx-auto max-w-4xl text-center">
-      <h2 class="text-5xl sm:text-4xl font-black mb-16">Ready to Obliterate Your Competition?</h2>
-      <a href="#signup-form" class="bg-white text-[#F56400] px-10 py-6 text-2xl font-bold rounded-xl hover:scale-105">
-        INJECT MY PROFIT MACHINE
-      </a>
-      <p class="mt-12 text-xl opacity-80">No spam. No bullshit. Pure Etsy domination.</p>
-    </div>
-  </section>
-
-  <!-- Signup Form Section -->
-  <section id="signup-form" class="py-24 bg-[#F3F1E8] text-black px-4">
-    <div class="container mx-auto max-w-2xl text-center">
-      <h2 class="text-4xl md:text-5xl font-black mb-8">Want Early Access?</h2>
-      <p class="text-xl md:text-2xl mb-12 text-gray-700">Be the first to try the full SaaS when we launch 🚀</p>
-      <form class="space-y-6">
-        <input type="text" placeholder="Your Name" class="w-full px-6 py-4 rounded-xl border border-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-[#F56400]" />
-        <input type="email" placeholder="Your Email" class="w-full px-6 py-4 rounded-xl border border-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-[#F56400]" />
-        <button type="submit" class="bg-[#F56400] text-white px-10 py-4 rounded-xl text-xl font-bold hover:scale-105 transition-transform w-full">
-          Get Early Access
-        </button>
-      </form>
-      <p class="mt-6 text-gray-600 text-sm">No spam. No BS. Just pure value when we go live.</p>
-    </div>
-  </section>
-
-  <!-- Scripts -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      new Typed('#typed-headline', {
-        strings: ['ETSY DOMINATION', 'AI SCALING ENGINE'],
-        typeSpeed: 120,
-        backSpeed: 80,
-        backDelay: 2000,
-        loop: true
-      });
-
-      $(".twentytwenty-container").twentytwenty();
-    });
-  </script>
-</body>
-</html>
+        
+        <div class="bg-white p-8 rounded-xl shadow-sm testimonial-card">
+          <div class="flex items-center mb-4">
+            <div class="text-[#F56400]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.
