@@ -8,13 +8,13 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Before/After Effect -->
+  <!-- Before/After Effect - Using CDN for all required libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/css/twentytwenty.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.event.move/2.0.0/jquery.event.move.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/js/jquery.twentytwenty.min.js"></script>
 
-  <!-- Typed.js -->
+  <!-- Typed.js - For animated text -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
   <!-- Fonts -->
@@ -75,68 +75,66 @@
     }
   </style>
 </head>
-
 <body class="bg-gray-50 text-gray-900">
-  <!-- Navigation -->
-  <nav class="bg-white shadow-sm py-4 sticky top-0 z-50">
-    <div class="container mx-auto px-6 flex justify-between items-center">
-      <div class="flex items-center">
-        <span class="text-2xl font-bold text-[#F56400]">EtsyPro</span>
-        <span class="text-xl font-bold ml-1">AI</span>
-      </div>
-      <div class="hidden md:flex space-x-8">
-        <a href="#features" class="font-medium hover:text-[#F56400] transition-colors">Features</a>
-        <a href="#how-it-works" class="font-medium hover:text-[#F56400] transition-colors">How It Works</a>
-        <a href="#pricing" class="font-medium hover:text-[#F56400] transition-colors">Pricing</a>
-      </div>
-      <a href="#early-access" class="bg-[#F56400] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#E45A00] transition-colors">
-        Get Early Access
-      </a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="py-20 md:py-32 flex items-center justify-center px-6 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#F3F1E8] to-white opacity-50"></div>
-    <div class="relative z-10 text-center max-w-4xl mx-auto">
-      <span class="text-[#F56400] font-semibold">Introducing the Etsy Seller's Secret Weapon</span>
-      <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 tracking-tight">
-        <span id="typed-headline"></span>
-      </h1>
-      <p class="text-lg md:text-2xl mb-12 text-gray-700 font-medium max-w-3xl mx-auto">
-        Transform your product photos into professional studio-quality listings with AI-optimized content, targeted SEO, and perfect keywords - all in minutes.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#early-access" class="bg-[#F56400] text-white px-8 py-4 text-lg font-bold rounded-xl hover:bg-[#E45A00] transition-colors">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm py-4 sticky top-0 z-50">
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <div class="flex items-center">
+          <span class="text-2xl font-bold text-[#F56400]">EtsyPro</span>
+          <span class="text-xl font-bold ml-1">AI</span>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#features" class="font-medium hover:text-[#F56400] transition-colors">Features</a>
+          <a href="#how-it-works" class="font-medium hover:text-[#F56400] transition-colors">How It Works</a>
+          <a href="#pricing" class="font-medium hover:text-[#F56400] transition-colors">Pricing</a>
+        </div>
+        <a href="#early-access" class="bg-[#F56400] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#E45A00] transition-colors">
           Get Early Access
         </a>
-        <a href="#how-it-works" class="bg-white text-gray-800 px-8 py-4 text-lg font-bold rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">
-          See How It Works
-        </a>
       </div>
-      <p class="text-gray-500 mt-6">Join 100+ Etsy sellers already on the waiting list</p>
-    </div>
-  </section>
-
-  <!-- Social Proof -->
-  <section class="py-10 bg-white">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
-        <span class="text-gray-500 font-medium">Trusted by sellers with</span>
-        <div class="flex items-center">
-          <span class="text-2xl font-bold text-gray-700">₪1,000,000+</span>
-          <span class="ml-2 text-gray-500">in combined Etsy sales</span>
+    </nav>
+  
+    <!-- Hero Section -->
+    <section class="py-20 md:py-32 flex items-center justify-center px-6 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-[#F3F1E8] to-white opacity-50"></div>
+      <div class="relative z-10 text-center max-w-4xl mx-auto">
+        <span class="text-[#F56400] font-semibold">Introducing the Etsy Seller's Secret Weapon</span>
+        <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 tracking-tight">
+          <span id="typed-headline"></span>
+        </h1>
+        <p class="text-lg md:text-2xl mb-12 text-gray-700 font-medium max-w-3xl mx-auto">
+          Transform your product photos into professional studio-quality listings with AI-optimized content, targeted SEO, and perfect keywords - all in minutes.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#early-access" class="bg-[#F56400] text-white px-8 py-4 text-lg font-bold rounded-xl hover:bg-[#E45A00] transition-colors">
+            Get Early Access
+          </a>
+          <a href="#how-it-works" class="bg-white text-gray-800 px-8 py-4 text-lg font-bold rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">
+            See How It Works
+          </a>
         </div>
-        <div class="h-6 border-r border-gray-300 hidden md:block"></div>
-        <div class="flex items-center">
-          <span class="text-2xl font-bold text-gray-700">10+</span>
-          <span class="ml-2 text-gray-500">successful stores</span>
+        <p class="text-gray-500 mt-6">Join 100+ Etsy sellers already on the waiting list</p>
+      </div>
+    </section>
+  
+    <!-- Social Proof -->
+    <section class="py-10 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
+          <span class="text-gray-500 font-medium">Trusted by sellers with</span>
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-gray-700">₪1,000,000+</span>
+            <span class="ml-2 text-gray-500">in combined Etsy sales</span>
+          </div>
+          <div class="h-6 border-r border-gray-300 hidden md:block"></div>
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-gray-700">10+</span>
+            <span class="ml-2 text-gray-500">successful stores</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Features -->
+    </section>
+    <!-- Features -->
   <section id="features" class="py-20 bg-gray-50 px-6">
     <div class="container mx-auto max-w-6xl">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Everything You Need for Etsy Success</h2>
@@ -196,7 +194,6 @@
       </div>
     </div>
   </section>
-
   <!-- How It Works -->
   <section id="how-it-works" class="py-20 bg-white px-6">
     <div class="container mx-auto max-w-6xl">
@@ -247,7 +244,9 @@
         </div>
         
         <div class="bg-gray-100 p-4 rounded-xl shadow-sm">
+          <!-- TwentyTwenty Container - Contains both before and after images -->
           <div class="twentytwenty-container w-full">
+            <!-- הערה: יש להחליף את תמונות הדוגמה בתמונות אמיתיות של המוצר שלך -->
             <img src="before.jpg" alt="Basic product photo" />
             <img src="after.jpg" alt="Professional studio quality photo" />
           </div>
@@ -261,7 +260,6 @@
       </div>
     </div>
   </section>
-
   <!-- Testimonials -->
   <section class="py-20 bg-gray-50 px-6">
     <div class="container mx-auto max-w-6xl">
@@ -311,7 +309,338 @@
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6">"I was spending ₪200 per product on photography before. Now I pay ₪2 and get even better results with the AI. The ROI is incredible."</p>
+          <div class="flex items-center">
+            <div class="h-10 w-10 bg-gray-200 rounded-full mr-3"></div>
+            <div>
+              <p class="font-medium">David L.</p>
+              <p class="text-gray-500 text-sm">Home Decor Shop</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-sm testimonial-card">
+          <div class="flex items-center mb-4">
+            <div class="text-[#F56400]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6">"The SEO optimization is what sold me. My listings are showing up on the first page for competitive keywords after using this tool."</p>
+          <div class="flex items-center">
+            <div class="h-10 w-10 bg-gray-200 rounded-full mr-3"></div>
+            <div>
+              <p class="font-medium">Sarah T.</p>
+              <p class="text-gray-500 text-sm">Digital Printables</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 bg-white px-6">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Simple, Transparent Pricing</h2>
+      <p class="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
+        Choose the quality level that matches your needs. Pay only for what you use.
+      </p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-sm pricing-card border border-gray-200">
+          <h3 class="text-2xl font-bold mb-2">Standard</h3>
+          <p class="text-gray-600 mb-6">Good quality for basic listings</p>
+          <p class="text-4xl font-black text-[#F56400] mb-4">₪1<span class="text-lg font-normal text-gray-500">/credit</span></p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Enhanced product photos</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Basic SEO optimization</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Simple product descriptions</span>
+            </li>
+          </ul>
+          <a href="#early-access" class="block text-center bg-gray-100 text-gray-800 font-medium py-3 rounded-lg hover:bg-gray-200 transition-colors">
+            Get Started
+          </a>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-md pricing-card border-2 border-[#F56400] featured relative transform md:-translate-y-4">
+          <h3 class="text-2xl font-bold mb-2">Professional</h3>
+          <p class="text-gray-600 mb-6">Studio quality with precise SEO</p>
+          <p class="text-4xl font-black text-[#F56400] mb-4">₪2<span class="text-lg font-normal text-gray-500">/credit</span></p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Studio-quality product photos</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Advanced SEO with top keywords</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Compelling product descriptions</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Model showcase (where applicable)</span>
+            </li>
+          </ul>
+          <a href="#early-access" class="block text-center bg-[#F56400] text-white font-medium py-3 rounded-lg hover:bg-[#E45A00] transition-colors">
+            Most Popular
+          </a>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-sm pricing-card border border-gray-200">
+          <h3 class="text-2xl font-bold mb-2">Premium</h3>
+          <p class="text-gray-600 mb-6">Ultra-realistic with detailed analysis</p>
+          <p class="text-4xl font-black text-[#F56400] mb-4">₪5<span class="text-lg font-normal text-gray-500">/credit</span></p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Ultra-realistic product images</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Premium SEO & market analysis</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Storytelling product descriptions</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Multiple lifestyle image variations</span>
+            </li>
+          </ul>
+          <a href="#early-access" class="block text-center bg-gray-100 text-gray-800 font-medium py-3 rounded-lg hover:bg-gray-200 transition-colors">
+            Get Started
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-12 bg-gray-50 p-6 rounded-xl text-center">
+        <span class="inline-block bg-[#F56400] text-white px-4 py-1 rounded-full text-sm font-medium mb-4">Limited Time Offer</span>
+        <h3 class="text-2xl font-bold mb-2">Early Access Bonus</h3>
+        <p class="text-gray-600 mb-4">First 100 users get 5 free Professional credits to try the service</p>
+        <a href="#early-access" class="inline-block bg-[#F56400] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#E45A00] transition-colors">
+          Claim Your Bonus
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Call to Action -->
+  <section class="py-20 bg-[#F56400] px-6 text-white">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-3xl md:text-5xl font-black mb-6">Ready to Transform Your Etsy Store?</h2>
+      <p class="text-xl mb-10 text-white text-opacity-90 max-w-2xl mx-auto">
+        Join our early access list and be the first to know when we launch. Get exclusive perks and bonus credits.
+      </p>
+      <a href="#early-access" class="inline-block bg-white text-[#F56400] px-10 py-4 text-xl font-bold rounded-xl hover:bg-gray-100 transition-colors">
+        Get Early Access
+      </a>
+    </div>
+  </section>
+
+  <!-- Signup Form Section -->
+  <section id="early-access" class="py-24 bg-[#F3F1E8] px-6">
+    <div class="container mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl md:text-4xl font-black mb-6">Secure Your Early Access</h2>
+      <p class="text-xl text-gray-700 mb-10 max-w-xl mx-auto">
+        Be the first to try EtsyPro AI and receive 5 free credits when we launch
+      </p>
+      <form class="bg-white p-8 rounded-xl shadow-sm max-w-xl mx-auto">
+        <div class="space-y-6">
+          <div>
+            <label for="name" class="block text-left text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required
+              placeholder="Your Name" 
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent"
+            />
+          </div>
+          
+          <div>
+            <label for="email" class="block text-left text-sm font-medium text-gray-700 mb-1">Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required
+              placeholder="you@example.com" 
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent"
+            />
+          </div>
+          
+          <div>
+            <label for="etsy_store" class="block text-left text-sm font-medium text-gray-700 mb-1">Etsy Store URL (optional)</label>
+            <input 
+              type="text" 
+              id="etsy_store" 
+              name="etsy_store"
+              placeholder="https://www.etsy.com/shop/yourstore" 
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent"
+            />
+          </div>
+          
+          <div class="pt-2">
+            <button 
+              type="submit" 
+              class="w-full bg-[#F56400] text-white px-6 py-4 rounded-lg text-lg font-bold hover:bg-[#E45A00] transition-colors"
+            >
+              Join the Waiting List
+            </button>
+          </div>
+        </div>
+        <p class="mt-4 text-sm text-gray-500">
+          By signing up, you'll be the first to know when we launch. No spam, ever.
+        </p>
+      </form>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12 px-6">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center mb-4">
+            <span class="text-2xl font-bold text-[#F56400]">EtsyPro</span>
+            <span class="text-xl font-bold ml-1">AI</span>
+          </div>
+          <p class="text-gray-400 mb-6">
+            Transforming Etsy stores with AI-powered product listings and optimized content.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058
+                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4">Product</h3>
+          <ul class="space-y-2">
+            <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+            <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+            <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4">Resources</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Tutorials</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4">Legal</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 EtsyPro AI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts - Placed at the end to avoid blocking page rendering -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Typed.js initialization
+      new Typed('#typed-headline', {
+        strings: ['TRANSFORM PRODUCT PHOTOS', 'BOOST ETSY SALES', 'OPTIMIZE SEO INSTANTLY'],
+        typeSpeed: 80,
+        backSpeed: 40,
+        backDelay: 2000,
+        loop: true
+      });
+
+      // TwentyTwenty initialization - Make sure this runs AFTER the images have loaded
+      $(window).on('load', function() {
+        $(".twentytwenty-container").twentytwenty({
+          default_offset_pct: 0.5, // How much of the "before" image is visible when the page loads
+          orientation: 'horizontal', // Orientation of the before and after images ('horizontal' or 'vertical')
+          before_label: 'Before', // Set a custom before label
+          after_label: 'After', // Set a custom after label
+          no_overlay: false // Do not show the overlay with before and after
+        });
+      });
+    });
+  </script>
+</body>
+</html>
