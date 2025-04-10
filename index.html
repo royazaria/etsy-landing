@@ -724,65 +724,80 @@
     */
   });
 </script>
-<!-- Founder Video Section -->
+<!-- Founder Video Section (Redesigned) -->
 <section class="py-20 bg-[#F3F1E8] px-6">
-  <div class="container mx-auto max-w-5xl">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <!-- Video Column -->
-      <div class="bg-white p-4 rounded-xl shadow-sm">
-        <!-- Video Container - Replace with your actual video embed code when ready -->
-        <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden relative">
-          <!-- Placeholder until your video is ready -->
-          <img src="/api/placeholder/600/338" alt="Founder video placeholder" class="w-full h-full object-cover" />
+  <div class="container mx-auto max-w-6xl">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Meet the Creator Behind EtsyPro AI</h2>
+    <p class="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
+      From successful Etsy seller to building the ultimate solution for product listings
+    </p>
+    
+    <div class="relative overflow-hidden rounded-xl shadow-xl max-w-4xl mx-auto">
+      <!-- Video Container -->
+      <div class="aspect-video relative">
+        <!-- Placeholder until your video is ready -->
+        <div class="absolute inset-0 flex items-center justify-center bg-gray-800 z-10 video-placeholder">
+          <img src="/api/placeholder/1280/720" alt="Founder video" class="w-full h-full object-cover opacity-70" />
           
-          <!-- Play button overlay - Remove this when adding real video -->
+          <!-- Play button overlay -->
           <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-16 h-16 bg-[#F56400] bg-opacity-90 rounded-full flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
+            <div class="w-20 h-20 bg-[#F56400] bg-opacity-90 rounded-full flex items-center justify-center cursor-pointer hover:bg-opacity-100 transition-all duration-300 hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
               </svg>
             </div>
           </div>
         </div>
-        
-        <!-- Video Caption -->
-        <div class="mt-4 text-center">
-          <p class="text-sm text-gray-500">Watch how I built EtsyPro AI after running 10+ Etsy shops</p>
-        </div>
       </div>
       
-      <!-- Message Column -->
-      <div>
-        <span class="inline-block bg-[#F56400] text-white px-3 py-1 rounded-full text-sm font-medium mb-4">From The Founder</span>
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Why I Created EtsyPro AI</h2>
-        <p class="text-lg text-gray-700 mb-6">
-          After managing 10+ Etsy shops and generating over $300,000 in sales, I got tired of juggling between different tools and spending hours on each listing. I built EtsyPro AI to solve my own problems first—now I'm making it available to you.
-        </p>
+      <!-- Founder story below video -->
+      <div class="bg-white p-6 md:p-8">
+        <div class="mb-6">
+          <h3 class="text-2xl font-bold mb-4 text-[#F56400]">Why I Created EtsyPro AI</h3>
+          <p class="text-gray-700">
+            After managing 10+ Etsy shops and generating over $300,000 in sales, I got tired of juggling between different tools and spending hours on each listing. I built EtsyPro AI to solve my own problems first—now I'm making it available to you.
+          </p>
+        </div>
         
-        <div class="space-y-4 mb-8">
-          <div class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#F56400] mr-3 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <p class="text-gray-700">I personally tested every feature with my own products</p>
+        <!-- Founder experience steps -->
+        <div class="grid md:grid-cols-3 gap-4 text-center">
+          <div class="p-4">
+            <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#F56400]" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <h4 class="font-medium mb-1">Real Expertise</h4>
+            <p class="text-sm text-gray-600">Personally tested with my own successful products</p>
           </div>
-          <div class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#F56400] mr-3 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <p class="text-gray-700">Beta testers are saving 30+ hours per month</p>
+          
+          <div class="p-4">
+            <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#F56400]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h4 class="font-medium mb-1">Time Savings</h4>
+            <p class="text-sm text-gray-600">Users save 30+ hours per month</p>
           </div>
-          <div class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#F56400] mr-3 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <p class="text-gray-700">Early access members get 5 free Professional credits</p>
+          
+          <div class="p-4">
+            <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#F56400]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h4 class="font-medium mb-1">Exclusive Bonus</h4>
+            <p class="text-sm text-gray-600">Early users get 5 free Professional credits</p>
           </div>
         </div>
         
-        <a href="#early-access" class="inline-block bg-[#F56400] text-white px-8 py-4 text-lg font-bold rounded-xl hover:bg-[#E45A00] transition-colors">
-          Join as a Beta Tester
-        </a>
+        <!-- CTA -->
+        <div class="mt-8 text-center">
+          <a href="#early-access" class="inline-block bg-[#F56400] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#E45A00] transition-colors">
+            Get Your Access Today
+          </a>
+        </div>
       </div>
     </div>
   </div>
