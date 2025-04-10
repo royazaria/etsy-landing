@@ -34,6 +34,18 @@
       color: var(--etsy-orange);
       font-weight: bold;
     }
+    /* Fixed height container for typed text to prevent layout shifts */
+    .typed-container {
+      min-height: 80px; /* For mobile */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (min-width: 768px) {
+      .typed-container {
+        min-height: 140px; /* For desktop */
+      }
+    }
     .feature-card {
       transition: all 0.3s ease;
       transform-origin: center;
@@ -99,9 +111,11 @@
       <div class="absolute inset-0 bg-gradient-to-br from-[#F3F1E8] to-white opacity-50"></div>
       <div class="relative z-10 text-center max-w-4xl mx-auto">
         <span class="text-[#F56400] font-semibold">Introducing the Etsy Seller's Secret Weapon</span>
-        <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 tracking-tight">
-          <span id="typed-headline"></span>
-        </h1>
+       <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 tracking-tight">
+  <div class="typed-container">
+    <span id="typed-headline"></span>
+  </div>
+</h1>
         <p class="text-lg md:text-2xl mb-12 text-gray-700 font-medium max-w-3xl mx-auto">
           Transform your product photos into professional studio-quality listings with AI-optimized content, targeted SEO, and perfect keywords - all in minutes.
         </p>
@@ -840,14 +854,17 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       // Typed.js initialization
-      new Typed('#typed-headline', {
-        strings: ['TRANSFORM PRODUCT PHOTOS', 'BOOST ETSY SALES', 'OPTIMIZE SEO INSTANTLY'],
-        typeSpeed: 80,
-        backSpeed: 40,
-        backDelay: 2000,
-        loop: true
-      });
-
+   new Typed('#typed-headline', {
+  strings: [
+    'COMPLETE ETSY LISTINGS FROM ONE PHOTO', 
+    'PROFESSIONAL ETSY STORE IN MINUTES', 
+    'FROM PRODUCT PHOTO TO READY-TO-SELL'
+  ],
+  typeSpeed: 80,
+  backSpeed: 40,
+  backDelay: 2000,
+  loop: true
+});
       // TwentyTwenty initialization - Make sure this runs AFTER the images have loaded
       $(window).on('load', function() {
         $(".twentytwenty-container").twentytwenty({
