@@ -20,7 +20,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
-  <style>
+<style>
     :root {
       --etsy-orange: #F56400;
       --etsy-background: #F3F1E8;
@@ -36,14 +36,14 @@
     }
     /* Fixed height container for typed text to prevent layout shifts */
     .typed-container {
-      min-height: 80px; /* For mobile */
+      min-height: 140px; /* Increased height for mobile */
       display: flex;
       align-items: center;
       justify-content: center;
     }
     @media (min-width: 768px) {
       .typed-container {
-        min-height: 140px; /* For desktop */
+        min-height: 180px; /* Increased height for desktop */
       }
     }
     .feature-card {
@@ -1047,33 +1047,33 @@
     </div>
   </div>
 </footer>
+<!-- Scripts - Placed at the end to avoid blocking page rendering -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Typed.js initialization
+    new Typed('#typed-headline', {
+      strings: [
+        'COMPLETE ETSY LISTINGS FROM ONE PHOTO', 
+        'PROFESSIONAL STORE IN JUST MINUTES', 
+        'FROM PRODUCT PHOTO TO READY-TO-SELL'
+      ],
+      typeSpeed: 80,
+      backSpeed: 40,
+      backDelay: 2000,
+      loop: true
+    });
 
-  <!-- Scripts - Placed at the end to avoid blocking page rendering -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Typed.js initialization
-   new Typed('#typed-headline', {
-  strings: [
-    'COMPLETE ETSY LISTINGS FROM ONE PHOTO', 
-    'PROFESSIONAL ETSY STORE IN MINUTES', 
-    'FROM PRODUCT PHOTO TO READY-TO-SELL'
-  ],
-  typeSpeed: 80,
-  backSpeed: 40,
-  backDelay: 2000,
-  loop: true
-});
-      // TwentyTwenty initialization - Make sure this runs AFTER the images have loaded
-      $(window).on('load', function() {
-        $(".twentytwenty-container").twentytwenty({
-          default_offset_pct: 0.5, // How much of the "before" image is visible when the page loads
-          orientation: 'horizontal', // Orientation of the before and after images ('horizontal' or 'vertical')
-          before_label: 'Before', // Set a custom before label
-          after_label: 'After', // Set a custom after label
-          no_overlay: false // Do not show the overlay with before and after
-        });
+    // TwentyTwenty initialization - Make sure this runs AFTER the images have loaded
+    $(window).on('load', function() {
+      $(".twentytwenty-container").twentytwenty({
+        default_offset_pct: 0.5, // How much of the "before" image is visible when the page loads
+        orientation: 'horizontal', // Orientation of the before and after images ('horizontal' or 'vertical')
+        before_label: 'Before', // Set a custom before label
+        after_label: 'After', // Set a custom after label
+        no_overlay: false // Do not show the overlay with before and after
       });
     });
-  </script>
+  });
+</script>
 </body>
 </html>
