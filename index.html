@@ -816,11 +816,11 @@
               </div>
               <div class="flex justify-between items-center border-b border-gray-200 pb-2">
                 <span class="text-gray-600">Total value saved:</span>
-                <span class="font-bold text-xl text-green-600" id="yearlyValueSaved">$2,904</span>
+                <span class="font-bold text-xl text-green-600" id="yearlyValueSaved">$3,024</span>
               </div>
               <div class="flex justify-between items-center pt-2">
                 <span class="text-gray-800 font-medium">Annual ROI:</span>
-                <span class="font-bold text-2xl text-[#F56400]" id="annualRoi">1,452%</span>
+                <span class="font-bold text-2xl text-[#F56400]" id="annualRoi">1,260%</span>
               </div>
             </div>
           </div>
@@ -944,46 +944,57 @@
     
     // Calculate savings function
     function calculateSavings() {
+      // Get input values
       const listings = parseInt(listingsPerMonth.value);
-      const minutes = parseInt(minutesPerListing.value);
+      const minutesPerListing = parseInt(document.getElementById('minutesPerListing').value);
       const useVA = useVAYes.checked;
-      const tools = parseInt(toolsCost.value);
+      const toolsCostValue = parseInt(toolsCost.value);
       const planCost = parseInt(eproAiPlan.value);
       
       // Constants
       const eproAiMinutesPerListing = 2;
-      const workingHoursPerMonth = 160; // Assuming 40 hours/week, 4 weeks/month
       
       // Calculate time savings
-      const currentHoursPerMonth = (listings * minutes) / 60;
-      const eproAiHoursPerMonth = (listings * eproAiMinutesPerListing) / 60;
-      const hoursSavedValue = (currentHoursPerMonth - eproAiHoursPerMonth).toFixed(1);
+      const currentTimeInMinutes = listings * minutesPerListing;
+      const eproAiTimeInMinutes = listings * eproAiMinutesPerListing;
+      const minutesSaved = currentTimeInMinutes - eproAiTimeInMinutes;
+      const hoursSavedValue = (minutesSaved / 60).toFixed(1);
       
-      // Calculate value savings based on whether using VA or personal time
+      // Calculate financial value of time saved
       let timeSavedValue;
       if (useVA) {
+        // If using VA, calculate based on VA salary
         const monthlySalary = parseInt(vaSalary.value);
-        // For VA: Calculate the portion of their salary this time represents
-        const portionOfWorkSaved = hoursSavedValue / workingHoursPerMonth;
-        timeSavedValue = (monthlySalary * portionOfWorkSaved).toFixed(0);
+        // Assuming VA works 160 hours per month (40 hours/week * 4 weeks)
+        const vaHourlyRate = monthlySalary / 160;
+        timeSavedValue = (hoursSavedValue * vaHourlyRate).toFixed(0);
       } else {
-        const rate = parseInt(hourlyRate.value);
-        timeSavedValue = (hoursSavedValue * rate).toFixed(0);
+        // If not using VA, calculate based on personal hourly rate
+        const hourlyRateValue = parseInt(hourlyRate.value);
+        timeSavedValue = (hoursSavedValue * hourlyRateValue).toFixed(0);
       }
       
+      // Calculate ePro AI cost and net benefit
       const eproAiCostValue = (listings * planCost).toFixed(0);
-      const netBenefitValue = (parseFloat(timeSavedValue) + tools - parseFloat(eproAiCostValue)).toFixed(0);
+      const netBenefitValue = (parseInt(timeSavedValue) + toolsCostValue - parseInt(eproAiCostValue)).toFixed(0);
       
+      // Calculate yearly values
       const yearlyHoursSavedValue = (hoursSavedValue * 12).toFixed(0);
       const yearlyValueSavedValue = (netBenefitValue * 12).toFixed(0);
-      const roiValue = ((netBenefitValue * 12) / (eproAiCostValue * 12) * 100).toFixed(0);
       
-      const timeReductionPercent = (((minutes - eproAiMinutesPerListing) / minutes) * 100).toFixed(0);
+      // Calculate ROI: (yearly benefit / yearly cost) * 100
+      let roiValue = 0;
+      if (parseInt(eproAiCostValue) > 0) {
+        roiValue = ((parseInt(netBenefitValue) / parseInt(eproAiCostValue)) * 100).toFixed(0);
+      }
       
-      // Update display
+      // Calculate time reduction percentage
+      const timeReductionPercent = ((minutesSaved / currentTimeInMinutes) * 100).toFixed(0);
+      
+      // Update display elements
       hoursSaved.textContent = hoursSavedValue + ' hours';
       valueSaved.textContent = '$' + timeSavedValue;
-      toolSavings.textContent = '$' + tools;
+      toolSavings.textContent = '$' + toolsCostValue;
       eproAiCost.textContent = '$' + eproAiCostValue;
       netBenefit.textContent = '$' + netBenefitValue;
       
@@ -993,16 +1004,17 @@
       
       timeReductionPercentage.textContent = timeReductionPercent + '% Time Reduction';
       
-      // Update visualization
-      currentTimeBar.style.width = ((minutes / (minutes + eproAiMinutesPerListing)) * 100) + '%';
-      eproAiTimeBar.style.width = ((eproAiMinutesPerListing / (minutes + eproAiMinutesPerListing)) * 100) + '%';
+      // Update visualization bar lengths
+      const totalTime = minutesPerListing + eproAiMinutesPerListing;
+      currentTimeBar.style.width = ((minutesPerListing / totalTime) * 100) + '%';
+      eproAiTimeBar.style.width = ((eproAiMinutesPerListing / totalTime) * 100) + '%';
       
-      // Update CTA
+      // Update Call to Action
       ctaHoursSaved.textContent = hoursSavedValue + ' hours';
       ctaDollarsSaved.textContent = '$' + netBenefitValue;
     }
     
-    // Initial calculation
+    // Run initial calculation
     calculateSavings();
   });
 </script>
