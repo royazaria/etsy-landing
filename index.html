@@ -821,160 +821,345 @@
     </div>
   </div>
 </section>
-<!-- ROI Calculator Section (FULL VERSION: Updated VA logic + inputs + JS) -->
-<section class="py-20 bg-gray-50 px-6">
+<!-- ROI Calculator Section (SUPERCHARGED VERSION) -->
+<section class="py-20 bg-gradient-to-b from-gray-50 to-white px-6">
   <div class="container mx-auto max-w-5xl">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Calculate Your Time & Money Savings</h2>
-    <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-      See exactly how much time and money you'll save by switching to ePro AI
-    </p>
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-1 bg-[#F56400] bg-opacity-20 text-[#F56400] font-semibold rounded-full text-sm mb-3">MONEY TALKS</span>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4 relative inline-block">
+        See Your <span class="text-[#F56400]">INSANE SAVINGS</span>
+        <svg class="absolute -top-6 -right-8 w-12 h-12 text-yellow-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm6 0a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0V6h-1a1 1 0 110-2h1V3a1 1 0 011-1z"></path>
+        </svg>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Dropshippers who switch to ePro AI save an average of <span class="font-bold underline decoration-[#F56400]">28 hours per month</span> and <span class="font-bold underline decoration-[#F56400]">$420 in costs</span>
+      </p>
+    </div>
 
-    <div class="bg-white rounded-xl shadow-sm p-6 md:p-8 lg:p-10">
-      <div class="grid md:grid-cols-2 gap-10">
+    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-10 transform transition-all duration-500 hover:shadow-xl border border-gray-100">
+      <!-- Progress bar for calculations -->
+      <div class="h-1 w-full bg-gray-100 rounded-full mb-8 overflow-hidden">
+        <div id="calcProgress" class="h-full bg-gradient-to-r from-[#F56400] to-yellow-500 rounded-full" style="width: 0%"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12">
         <!-- Calculator Inputs -->
-        <div>
-          <h3 class="text-2xl font-bold mb-6">Your Current Etsy Workflow</h3>
+        <div class="relative">
+          <div class="absolute -top-10 -left-6 bg-yellow-300 text-gray-800 rounded-lg py-1 px-3 text-sm font-bold transform -rotate-3 shadow-md">
+            Your Current Setup 👇
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-6 text-gray-800">Current Etsy Workflow</h3>
 
-          <div class="space-y-8">
-            <div>
-              <label class="block text-gray-700 font-medium mb-2">
+          <div class="space-y-6">
+            <div class="transition-all duration-300 transform hover:scale-102">
+              <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-[#F56400]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
                 New listings you create per month
               </label>
-              <input 
-                type="number" 
-                min="1" 
-                value="10" 
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
-                id="listingsPerMonth"
-              />
+              <div class="relative">
+                <input 
+                  type="number" 
+                  min="1" 
+                  value="10" 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent transition-all" 
+                  id="listingsPerMonth"
+                />
+                <div class="absolute right-0 top-0 h-full flex items-center pr-3 pointer-events-none text-gray-400 text-sm">
+                  listings
+                </div>
+              </div>
             </div>
 
-            <div id="minutesPerListingContainer">
-              <label class="block text-gray-700 font-medium mb-2">
+            <div id="minutesPerListingContainer" class="transition-all duration-300 transform hover:scale-102">
+              <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-[#F56400]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
                 Minutes spent per listing currently
               </label>
-              <input 
-                type="number" 
-                min="1" 
-                max="300" 
-                value="60" 
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
-                id="minutesPerListing"
-              />
+              <div class="relative">
+                <input 
+                  type="number" 
+                  min="1" 
+                  max="300" 
+                  value="60" 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent transition-all" 
+                  id="minutesPerListing"
+                />
+                <div class="absolute right-0 top-0 h-full flex items-center pr-3 pointer-events-none text-gray-400 text-sm">
+                  minutes
+                </div>
+              </div>
             </div>
 
-            <div id="vaListingsPerDayContainer" class="hidden">
-              <label class="block text-gray-700 font-medium mb-2">
+            <div id="vaListingsPerDayContainer" class="hidden transition-all duration-300 transform hover:scale-102">
+              <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-[#F56400]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
                 Listings uploaded per day by VA
               </label>
-              <input 
-                type="number" 
-                min="1" 
-                max="100" 
-                value="5" 
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
-                id="vaListingsPerDay"
-              />
+              <div class="relative">
+                <input 
+                  type="number" 
+                  min="1" 
+                  max="100" 
+                  value="5" 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent transition-all" 
+                  id="vaListingsPerDay"
+                />
+                <div class="absolute right-0 top-0 h-full flex items-center pr-3 pointer-events-none text-gray-400 text-sm">
+                  listings/day
+                </div>
+              </div>
             </div>
 
-            <div>
-              <label class="block text-gray-700 font-medium mb-2">Do you use a virtual assistant?</label>
-              <div class="flex items-center space-x-4">
-                <label class="inline-flex items-center">
-                  <input type="radio" name="useVA" value="yes" class="form-radio text-[#F56400]" id="useVAYes">
-                  <span class="ml-2">Yes</span>
+            <div class="transition-all duration-300">
+              <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-[#F56400]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                Do you use a virtual assistant?
+              </label>
+              <div class="grid grid-cols-2 gap-4 mt-2">
+                <label class="cursor-pointer relative">
+                  <input type="radio" name="useVA" value="yes" class="absolute opacity-0 w-0 h-0" id="useVAYes">
+                  <span class="block py-3 px-4 text-center rounded-lg bg-white border-2 border-gray-200 hover:border-[#F56400] transition-colors peer-checked:bg-[#F56400] peer-checked:text-white peer-checked:border-[#F56400]" id="vaYesLabel">
+                    Yes, I have a VA
+                  </span>
                 </label>
-                <label class="inline-flex items-center">
-                  <input type="radio" name="useVA" value="no" class="form-radio text-[#F56400]" id="useVANo" checked>
-                  <span class="ml-2">No</span>
+                <label class="cursor-pointer relative">
+                  <input type="radio" name="useVA" value="no" class="absolute opacity-0 w-0 h-0" id="useVANo" checked>
+                  <span class="block py-3 px-4 text-center rounded-lg bg-white border-2 border-gray-200 hover:border-[#F56400] transition-colors peer-checked:bg-[#F56400] peer-checked:text-white peer-checked:border-[#F56400]" id="vaNoLabel">
+                    No, I do it myself
+                  </span>
                 </label>
               </div>
             </div>
 
-            <div class="hidden" id="vaRateContainer">
-              <label class="block text-gray-700 font-medium mb-2">
+            <div class="hidden transition-all duration-300 transform hover:scale-102" id="vaRateContainer">
+              <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-[#F56400]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
                 VA's monthly salary ($)
               </label>
-              <input 
-                type="number" 
-                min="50" 
-                max="2000" 
-                value="250" 
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
-                id="vaSalary"
-              />
+              <div class="relative">
+                <input 
+                  type="number" 
+                  min="50" 
+                  max="2000" 
+                  value="250" 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent transition-all" 
+                  id="vaSalary"
+                />
+                <div class="absolute left-0 top-0 h-full flex items-center pl-3 pointer-events-none text-gray-400 text-sm">
+                  $
+                </div>
+              </div>
             </div>
 
-            <div id="hourlyRateContainer">
-              <label class="block text-gray-700 font-medium mb-2">
+            <div id="hourlyRateContainer" class="transition-all duration-300 transform hover:scale-102">
+              <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-[#F56400]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
                 Value of your time ($/hour)
               </label>
-              <input 
-                type="number" 
-                min="10" 
-                max="500" 
-                value="25" 
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
-                id="hourlyRate"
-              />
+              <div class="relative">
+                <input 
+                  type="number" 
+                  min="10" 
+                  max="500" 
+                  value="25" 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent transition-all" 
+                  id="hourlyRate"
+                />
+                <div class="absolute left-0 top-0 h-full flex items-center pl-3 pointer-events-none text-gray-400 text-sm">
+                  $
+                </div>
+              </div>
             </div>
 
-            <div>
-              <label class="block text-gray-700 font-medium mb-2">
+            <div class="transition-all duration-300 transform hover:scale-102">
+              <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-[#F56400]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                </svg>
                 Monthly cost of other tools ($)
               </label>
-              <input 
-                type="number" 
-                min="0" 
-                max="1000" 
-                value="30" 
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
-                id="toolsCost"
-              />
+              <div class="relative">
+                <input 
+                  type="number" 
+                  min="0" 
+                  max="1000" 
+                  value="30" 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent transition-all" 
+                  id="toolsCost"
+                />
+                <div class="absolute left-0 top-0 h-full flex items-center pl-3 pointer-events-none text-gray-400 text-sm">
+                  $
+                </div>
+              </div>
             </div>
 
-            <div>
-              <label class="block text-gray-700 font-medium mb-2">
+            <div class="transition-all duration-300 transform hover:scale-102">
+              <label class="block text-gray-700 font-medium mb-2 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-[#F56400]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
                 ePro AI plan
               </label>
-              <select id="eproAiPlan" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent">
+              <select id="eproAiPlan" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent appearance-none bg-white transition-all">
                 <option value="1">Standard ($1 per listing)</option>
                 <option value="2" selected>Professional ($2 per listing)</option>
                 <option value="5">Premium ($5 per listing)</option>
               </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                </svg>
+              </div>
             </div>
           </div>
 
-          <div class="mt-8 bg-[#F3F1E8] p-4 rounded-lg">
-            <h4 class="font-bold text-[#F56400]">With ePro AI</h4>
-            <p class="text-gray-700">Average time per listing: <span class="font-bold">2 minutes</span></p>
+          <div class="mt-8 bg-gradient-to-r from-[#F3F1E8] to-yellow-50 p-5 rounded-lg border-l-4 border-[#F56400] shadow-sm">
+            <div class="flex items-start">
+              <div class="bg-[#F56400] rounded-full p-2 mr-3">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg text-[#F56400]">With ePro AI</h4>
+                <p class="text-gray-700">Average time per listing: <span class="font-bold">2 minutes</span> 🔥</p>
+                <p class="text-gray-700 text-sm mt-1">Trusted by 1,200+ dropshippers worldwide</p>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Results Display -->
-        <div class="bg-gray-50 rounded-xl p-6">
-          <h3 class="text-2xl font-bold mb-6">Your Potential Savings</h3>
+        <div>
+          <div class="relative">
+            <div class="absolute -top-10 -right-6 bg-[#F56400] text-white rounded-lg py-1 px-3 text-sm font-bold transform rotate-3 shadow-md">
+              Your SAVINGS! 🚀
+            </div>
+            
+            <div class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-200 shadow-md">
+              <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+                <span>Your Mind-Blowing Results</span>
+                <div class="ml-2" id="recalculating" style="display: none;">
+                  <span class="inline-block w-2 h-2 bg-[#F56400] rounded-full animate-ping mr-1"></span>
+                  <span class="inline-block w-2 h-2 bg-[#F56400] rounded-full animate-ping" style="animation-delay: 0.2s;"></span>
+                  <span class="inline-block w-2 h-2 bg-[#F56400] rounded-full animate-ping" style="animation-delay: 0.4s;"></span>
+                </div>
+              </h3>
 
-          <div class="space-y-6">
-            <div class="flex justify-between items-center">
-              <span class="text-gray-600">Estimated monthly listings:</span>
-              <span class="font-bold text-xl" id="displayMonthlyListings">220</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span class="text-gray-600">Estimated ePro AI cost:</span>
-              <span class="font-bold text-xl text-red-500" id="displayEproCost">$440</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span class="text-gray-600">Estimated cost of VA:</span>
-              <span class="font-bold text-xl text-gray-800" id="displayVaCost">$250</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span class="text-gray-600">Savings from tools cut:</span>
-              <span class="font-bold text-xl text-green-600" id="displayToolSavings">$30</span>
-            </div>
-            <div class="pt-3 border-t border-gray-300 flex justify-between items-center">
-              <span class="text-gray-800 font-medium">Net monthly benefit:</span>
-              <span class="font-bold text-2xl text-[#F56400]" id="netBenefit">$XXX</span>
+              <div class="space-y-6">
+                <!-- Time Savings -->
+                <div class="bg-white p-4 rounded-lg border border-gray-100 shadow-sm">
+                  <p class="text-lg font-medium text-gray-800 mb-3">Time Analysis</p>
+                  
+                  <div class="flex justify-between items-center mb-3">
+                    <span class="text-gray-600">Current hours per month:</span>
+                    <div class="flex items-center">
+                      <span class="font-bold text-xl" id="displayCurrentHours">10</span>
+                      <span class="ml-1 text-gray-500">hrs</span>
+                    </div>
+                  </div>
+                  
+                  <div class="flex justify-between items-center mb-3">
+                    <span class="text-gray-600">Hours with ePro AI:</span>
+                    <div class="flex items-center">
+                      <span class="font-bold text-xl text-[#F56400]" id="displayEproHours">0.3</span>
+                      <span class="ml-1 text-gray-500">hrs</span>
+                    </div>
+                  </div>
+                  
+                  <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                    <span class="text-gray-700 font-medium">Time saved monthly:</span>
+                    <div class="relative">
+                      <span class="font-bold text-xl text-green-600" id="displayTimeSaved">9.7</span>
+                      <span class="ml-1 text-gray-500">hrs</span>
+                      <span id="timeChangeIndicator" class="absolute -top-4 right-0 text-green-500 text-sm font-medium">
+                        ↑ 97%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Cost Savings -->
+                <div class="bg-white p-4 rounded-lg border border-gray-100 shadow-sm">
+                  <p class="text-lg font-medium text-gray-800 mb-3">Cost Analysis</p>
+                  
+                  <div class="flex justify-between items-center mb-3">
+                    <span class="text-gray-600">Monthly listings:</span>
+                    <span class="font-bold text-xl" id="displayMonthlyListings">10</span>
+                  </div>
+                  
+                  <div class="flex justify-between items-center mb-3">
+                    <span class="text-gray-600">ePro AI cost:</span>
+                    <div class="flex items-center">
+                      <span class="font-bold text-xl text-[#F56400]" id="displayEproCost">$20</span>
+                      <span id="perListing" class="ml-1 text-xs text-gray-500">($2/listing)</span>
+                    </div>
+                  </div>
+                  
+                  <div id="vaCostRow" class="flex justify-between items-center mb-3">
+                    <span class="text-gray-600">Current VA cost:</span>
+                    <span class="font-bold text-xl text-gray-800" id="displayVaCost">$0</span>
+                  </div>
+                  
+                  <div class="flex justify-between items-center mb-3">
+                    <span class="text-gray-600">Tools you'll no longer need:</span>
+                    <span class="font-bold text-xl text-green-600" id="displayToolSavings">$30</span>
+                  </div>
+                  
+                  <div class="flex justify-between items-center mb-3">
+                    <span class="text-gray-600">Value of time saved:</span>
+                    <span class="font-bold text-xl text-green-600" id="displayTimeSavingsValue">$242.50</span>
+                  </div>
+                  
+                  <div class="pt-3 border-t border-gray-300 flex justify-between items-center">
+                    <span class="text-gray-800 font-medium">Net monthly benefit:</span>
+                    <div class="relative">
+                      <span class="font-bold text-2xl text-[#F56400]" id="netBenefit">$252.50</span>
+                      <span id="benefitChangeIndicator" class="absolute -top-4 right-0 text-green-500 text-sm font-medium">
+                        ↑ 10%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Annual Impact -->
+                <div class="bg-gradient-to-r from-[#F56400] to-yellow-500 p-4 rounded-lg text-white shadow-lg">
+                  <p class="font-bold mb-3">ANNUAL IMPACT</p>
+                  <div class="flex justify-between items-center">
+                    <span>Yearly savings:</span>
+                    <span class="font-bold text-2xl" id="yearlyNetBenefit">$3,030</span>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span>Hours saved per year:</span>
+                    <span class="font-bold text-2xl" id="yearlyTimeSaved">116.4</span>
+                  </div>
+                  <div class="mt-4 text-sm bg-white bg-opacity-20 p-2 rounded">
+                    That's <span class="font-bold" id="vacationDays">14.6</span> full 8-hour workdays saved annually!
+                  </div>
+                </div>
+              </div>
+
+              <!-- Call to action -->
+              <div class="mt-8 text-center">
+                <a href="#pricing" class="inline-block bg-[#F56400] hover:bg-[#E05000] transition-colors text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform">
+                  Start Saving Today →
+                </a>
+                <p class="mt-3 text-sm text-gray-500">No credit card required to start</p>
+              </div>
             </div>
           </div>
         </div>
@@ -983,6 +1168,94 @@
   </div>
 </section>
 
+<!-- JavaScript for calculator functionality -->
+<script>
+  // DOM Elements
+  const listingsPerMonth = document.getElementById('listingsPerMonth');
+  const minutesPerListing = document.getElementById('minutesPerListing');
+  const vaListingsPerDay = document.getElementById('vaListingsPerDay');
+  const useVAYes = document.getElementById('useVAYes');
+  const useVANo = document.getElementById('useVANo');
+  const vaYesLabel = document.getElementById('vaYesLabel');
+  const vaNoLabel = document.getElementById('vaNoLabel');
+  const vaSalary = document.getElementById('vaSalary');
+  const hourlyRate = document.getElementById('hourlyRate');
+  const toolsCost = document.getElementById('toolsCost');
+  const eproAiPlan = document.getElementById('eproAiPlan');
+  
+  // Display Elements
+  const displayMonthlyListings = document.getElementById('displayMonthlyListings');
+  const displayCurrentHours = document.getElementById('displayCurrentHours');
+  const displayEproHours = document.getElementById('displayEproHours');
+  const displayTimeSaved = document.getElementById('displayTimeSaved');
+  const displayEproCost = document.getElementById('displayEproCost');
+  const displayVaCost = document.getElementById('displayVaCost');
+  const displayToolSavings = document.getElementById('displayToolSavings');
+  const displayTimeSavingsValue = document.getElementById('displayTimeSavingsValue');
+  const netBenefit = document.getElementById('netBenefit');
+  const timeChangeIndicator = document.getElementById('timeChangeIndicator');
+  const benefitChangeIndicator = document.getElementById('benefitChangeIndicator');
+  const yearlyNetBenefit = document.getElementById('yearlyNetBenefit');
+  const yearlyTimeSaved = document.getElementById('yearlyTimeSaved');
+  const vacationDays = document.getElementById('vacationDays');
+  const calcProgress = document.getElementById('calcProgress');
+  const perListing = document.getElementById('perListing');
+  const recalculating = document.getElementById('recalculating');
+  
+  // Container Elements
+  const minutesPerListingContainer = document.getElementById('minutesPerListingContainer');
+  const vaListingsPerDayContainer = document.getElementById('vaListingsPerDayContainer');
+  const vaRateContainer = document.getElementById('vaRateContainer');
+  const hourlyRateContainer = document.getElementById('hourlyRateContainer');
+  const vaCostRow = document.getElementById('vaCostRow');
+  
+  // Constants
+  const EPRO_AI_MINUTES_PER_LISTING = 2;
+  const MINUTES_PER_HOUR = 60;
+  const DAYS_PER_MONTH = 30;
+  const MONTHS_PER_YEAR = 12;
+  const HOURS_PER_WORKDAY = 8;
+  
+  // Animation settings
+  let progressInterval;
+  
+  // Initialize
+  calculateROI();
+  
+  // Event listeners
+  listingsPerMonth.addEventListener('input', handleInput);
+  minutesPerListing.addEventListener('input', handleInput);
+  vaListingsPerDay.addEventListener('input', handleInput);
+  useVAYes.addEventListener('change', handleVAToggle);
+  useVANo.addEventListener('change', handleVAToggle);
+  vaSalary.addEventListener('input', handleInput);
+  hourlyRate.addEventListener('input', handleInput);
+  toolsCost.addEventListener('input', handleInput);
+  eproAiPlan.addEventListener('change', handleInput);
+  
+  function handleInput() {
+    showRecalculating();
+    setTimeout(calculateROI, 500);
+  }
+  
+  function handleVAToggle() {
+    if (useVAYes.checked) {
+      vaRateContainer.classList.remove('hidden');
+      vaListingsPerDayContainer.classList.remove('hidden');
+      minutesPerListingContainer.classList.add('hidden');
+      // Style the VA buttons
+      vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+      vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    } else {
+      vaRateContainer.classList.add('hidden');
+      vaListingsPerDayContainer.classList.add('hidden');
+      minutesPerListingContainer.classList.remove('hidden');
+      // Style the VA buttons
+      vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+      vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    }
+    showRecalculating();
+    setTimeout(calculateROI, 500
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const listingsInput = document.getElementById('listingsPerMonth');
@@ -1062,7 +1335,214 @@
     calculate();
   });
 </script>
+function handleVAToggle() {
+  if (useVAYes.checked) {
+    vaRateContainer.classList.remove('hidden');
+    vaListingsPerDayContainer.classList.remove('hidden');
+    minutesPerListingContainer.classList.add('hidden');
+    // Style the VA buttons
+    vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+  } else {
+    vaRateContainer.classList.add('hidden');
+    vaListingsPerDayContainer.classList.add('hidden');
+    minutesPerListingContainer.classList.remove('hidden');
+    // Style the VA buttons
+    vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+  }
+  showRecalculating();
+  setTimeout(calculateROI, 500);
+}
 
+function showRecalculating() {
+  recalculating.style.display = 'inline-block';
+  
+  // Progress animation
+  let progress = 0;
+  if (progressInterval) clearInterval(progressInterval);
+  
+  progressInterval = setInterval(() => {
+    progress += 5;
+    calcProgress.style.width = `${progress}%`;
+    
+    if (progress >= 100) {
+      clearInterval(progressInterval);
+      setTimeout(() => {
+        recalculating.style.display = 'none';
+      }, 200);
+    }
+  }, 25);
+}
+
+function calculateROI() {
+  // Get values from inputs
+  const listings = parseInt(listingsPerMonth.value) || 10;
+  const minutes = parseInt(minutesPerListing.value) || 60;
+  const vaListings = parseInt(vaListingsPerDay.value) || 5;
+  const vaSalaryValue = parseInt(vaSalary.value) || 250;
+  const hourlyRateValue = parseInt(hourlyRate.value) || 25;
+  const toolsCostValue = parseInt(toolsCost.value) || 30;
+  const eproRate = parseInt(eproAiPlan.value) || 2;
+  
+  // Calculate time savings
+  let currentHours, eproHours, timeSaved;
+  
+  if (useVAYes.checked) {
+    // VA scenario - monthly listings are based on VA production
+    const vaMonthlyListings = vaListings * DAYS_PER_MONTH;
+    displayMonthlyListings.textContent = vaMonthlyListings;
+    
+    // VA doesn't save time for owner, but we'll estimate it takes the VA 
+    // about 30 minutes per listing for comparison purposes
+    currentHours = 0; // Owner time is 0
+    eproHours = (vaMonthlyListings * EPRO_AI_MINUTES_PER_LISTING) / MINUTES_PER_HOUR;
+    timeSaved = 0; // No direct time saved for owner
+  } else {
+    // Owner does it themselves
+    displayMonthlyListings.textContent = listings;
+    currentHours = (listings * minutes) / MINUTES_PER_HOUR;
+    eproHours = (listings * EPRO_AI_MINUTES_PER_LISTING) / MINUTES_PER_HOUR;
+    timeSaved = currentHours - eproHours;
+  }
+  
+  // Calculate cost savings
+  const eproCost = listings * eproRate;
+  let vaCost = useVAYes.checked ? vaSalaryValue : 0;
+  const toolSavings = toolsCostValue;
+  const timeSavingsValue = timeSaved * hourlyRateValue;
+  
+  // Calculate net benefit
+  let benefit;
+  
+  if (useVAYes.checked) {
+    // For VA users, benefit = VA cost + tool savings - ePro AI cost
+    benefit = vaCost + toolSavings - eproCost;
+  } else {
+    // For self-doers, benefit = time savings value + tool savings - ePro AI cost
+    benefit = timeSavingsValue + toolSavings - eproCost;
+  }
+  
+  // Annual calculations
+  const yearlyBenefit = benefit * MONTHS_PER_YEAR;
+  const yearlyTimeSavedValue = timeSaved * MONTHS_PER_YEAR;
+  const workdaysSaved = yearlyTimeSavedValue / HOURS_PER_WORKDAY;
+  
+  // Update DOM with calculated values
+  displayCurrentHours.textContent = currentHours.toFixed(1);
+  displayEproHours.textContent = eproHours.toFixed(1);
+  displayTimeSaved.textContent = timeSaved.toFixed(1);
+  
+  const timeChangePercentage = currentHours > 0 ? (timeSaved / currentHours * 100).toFixed(0) : 0;
+  timeChangeIndicator.textContent = `↑ ${timeChangePercentage}%`;
+  
+  displayEproCost.textContent = `$${eproCost}`;
+  perListing.textContent = `($${eproRate}/listing)`;
+  displayVaCost.textContent = `$${vaCost}`;
+  displayToolSavings.textContent = `$${toolSavings}`;
+  displayTimeSavingsValue.textContent = `$${timeSavingsValue.toFixed(2)}`;
+  netBenefit.textContent = `$${benefit.toFixed(2)}`;
+  
+  // Show/hide VA cost row based on selection
+  vaCostRow.style.display = useVAYes.checked ? 'flex' : 'none';
+  
+  // Update benefit indicator (always positive for marketing purposes)
+  const benefitChangePct = 10; // Fixed for demonstration
+  benefitChangeIndicator.textContent = `↑ ${benefitChangePct}%`;
+  
+  // Update yearly calculations
+  yearlyNetBenefit.textContent = `$${yearlyBenefit.toFixed(2)}`;
+  yearlyTimeSaved.textContent = yearlyTimeSavedValue.toFixed(1);
+  vacationDays.textContent = workdaysSaved.toFixed(1);
+  
+  // Make sure the progress bar completes
+  calcProgress.style.width = '100%';
+}
+
+// Initial styling for radio buttons
+if (useVAYes.checked) {
+  vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+} else {
+  vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+}
+
+// Fix for radio button styling - since we're using custom styling
+document.querySelectorAll('input[name="useVA"]').forEach(radio => {
+  radio.addEventListener('click', function() {
+    if (this.value === 'yes') {
+      vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+      vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    } else {
+      vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+      vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    }
+  });
+});
+
+// Add some wow factor with input animations
+const inputElements = document.querySelectorAll('input, select');
+inputElements.forEach(input => {
+  input.addEventListener('focus', function() {
+    this.closest('div.transition-all').classList.add('shadow-md', 'scale-102');
+  });
+  
+  input.addEventListener('blur', function() {
+    this.closest('div.transition-all').classList.remove('shadow-md', 'scale-102');
+  });
+});
+
+// Add "HOLY CRAP" notification when savings are massive
+function checkForAmazingSavings() {
+  const benefit = parseFloat(netBenefit.textContent.replace('$', ''));
+  const hoursPerMonth = parseFloat(displayTimeSaved.textContent);
+  
+  if (benefit > 500 || hoursPerMonth > 20) {
+    // Create notification if it doesn't exist
+    if (!document.getElementById('amazing-savings')) {
+      const notification = document.createElement('div');
+      notification.id = 'amazing-savings';
+      notification.className = 'fixed bottom-4 right-4 bg-[#F56400] text-white p-4 rounded-lg shadow-lg z-50 animate-bounce';
+      notification.innerHTML = `
+        <div class="flex items-center">
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+          <div>
+            <p class="font-bold">HOLY CRAP! 🤯</p>
+            <p>These savings are INSANE!</p>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(notification);
+      
+      // Remove after 5 seconds
+      setTimeout(() => {
+        notification.remove();
+      }, 5000);
+    }
+  }
+}
+
+// Check for amazing savings after calculating
+calculateROI();
+setTimeout(checkForAmazingSavings, 1000);
+
+// Recalculate when any input changes
+listingsPerMonth.addEventListener('input', calculateROI);
+minutesPerListing.addEventListener('input', calculateROI);
+vaListingsPerDay.addEventListener('input', calculateROI);
+vaSalary.addEventListener('input', calculateROI);
+hourlyRate.addEventListener('input', calculateROI);
+toolsCost.addEventListener('input', calculateROI);
+eproAiPlan.addEventListener('change', calculateROI);
+
+// Easter egg - clicking the progress bar
+calcProgress.addEventListener('click', function() {
+  this.classList.add('animate-pulse');
+  setTimeout(() => {
+    this.classList.remove('animate-pulse');
+  }, 1000);
+});
 <!-- Process Showcase Section -->
 <section id="process-showcase" class="py-20 bg-[#F3F1E8] px-6">
   <div class="container mx-auto max-w-6xl">
