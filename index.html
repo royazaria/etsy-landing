@@ -237,7 +237,7 @@
       From a single product photo to a complete, optimized Etsy listing in just minutes
     </p>
     
- <!-- Process Visualization Section -->
+<!-- Process Visualization Section -->
 <section id="how-it-works" class="py-20 bg-white px-6">
   <div class="container mx-auto max-w-6xl">
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">How It Works</h2>
@@ -247,8 +247,8 @@
     
     <!-- Process Flowchart -->
     <div class="relative">
-      <!-- Vertical connecting line -->
-      <div class="absolute left-1/2 top-8 bottom-8 w-1 bg-gray-200 transform -translate-x-1/2 hidden md:block"></div>
+      <!-- Vertical connecting line - Fixed to extend through all steps -->
+      <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 transform -translate-x-1/2 hidden md:block"></div>
       
       <!-- Step 1: Upload Photo -->
       <div class="flex flex-col md:flex-row items-center mb-16 md:mb-24 relative">
@@ -454,115 +454,129 @@
         </div>
       </div>
       
-   <!-- Step 5: Publish to Etsy -->
-<div class="flex flex-col md:flex-row items-center relative">
-  <div class="md:w-1/2 flex justify-end pr-0 md:pr-12 mb-8 md:mb-0">
-    <div class="bg-[#F3F1E8] p-6 rounded-xl shadow-sm max-w-md">
-      <h3 class="text-xl font-bold mb-3 text-[#F56400]">5. Publish to Etsy</h3>
-      <p class="text-gray-700">Copy and paste your optimized content directly into Etsy, upload your enhanced images, and publish your professional listing in seconds. Your high-converting listing is ready to attract customers!</p>
-      <div class="mt-4 text-gray-500 text-sm italic">Time: Less than 1 minute</div>
-    </div>
-  </div>
-  <div class="absolute left-1/2 transform -translate-x-1/2 bg-[#F56400] text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold border-4 border-white z-10">5</div>
-  <div class="md:w-1/2 pl-0 md:pl-12">
-    <div class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden shadow-sm p-5">
-      <!-- Etsy Listing Preview -->
-      <div class="flex flex-col space-y-4">
-        <!-- Preview Header -->
-        <div class="flex items-center gap-3 pb-3 border-b border-gray-200">
-          <img src="after.jpg" alt="Wedding Dress Listing Image" class="h-12 w-12 rounded object-cover" />
-          <div>
-            <p class="font-semibold text-gray-800 text-sm">Minimalist Off Shoulder Satin Wedding Dress</p>
-            <p class="text-xs text-gray-500">Published</p>
+      <!-- Step 5: Publish to Etsy -->
+      <div class="flex flex-col md:flex-row items-center relative">
+        <div class="md:w-1/2 flex justify-end pr-0 md:pr-12 mb-8 md:mb-0">
+          <div class="bg-[#F3F1E8] p-6 rounded-xl shadow-sm max-w-md">
+            <h3 class="text-xl font-bold mb-3 text-[#F56400]">5. Publish to Etsy</h3>
+            <p class="text-gray-700">Copy and paste your optimized content directly into Etsy, upload your enhanced images, and publish your professional listing in seconds. Your high-converting listing is ready to attract customers!</p>
+            <div class="mt-4 text-gray-500 text-sm italic">Time: Less than 1 minute</div>
           </div>
         </div>
+        <div class="absolute left-1/2 transform -translate-x-1/2 bg-[#F56400] text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold border-4 border-white z-10">5</div>
+        <div class="md:w-1/2 pl-0 md:pl-12">
+          <div class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden shadow-sm p-5">
+            <!-- Etsy Listing Preview -->
+            <div class="flex flex-col space-y-4">
+              <!-- Preview Header -->
+              <div class="flex items-center gap-3 pb-3 border-b border-gray-200">
+                <img src="after.jpg" alt="Wedding Dress Listing Image" class="h-12 w-12 rounded object-cover" />
+                <div>
+                  <p class="font-semibold text-gray-800 text-sm">Minimalist Off Shoulder Satin Wedding Dress</p>
+                  <p class="text-xs text-gray-500">Published</p>
+                </div>
+              </div>
 
-        <!-- Image + Details -->
-        <div class="flex items-start gap-4">
-          <div class="w-1/3">
-            <img src="after.jpg" alt="Etsy Listing" class="w-full rounded-md aspect-square object-cover" />
-          </div>
-          <div class="w-2/3 space-y-2 text-sm">
-            <p class="font-medium text-gray-800">💍 Minimalist Off-Shoulder Satin Wedding Dress</p>
-            <p class="text-gray-600 text-xs">Modern bridal gown with off-shoulder corset design and soft satin finish.</p>
-            <p class="text-[#F56400] font-bold mt-2">$200 USD</p>
-            <div class="mt-2">
-              <span class="inline-block bg-[#F56400] text-white text-xs px-3 py-1 rounded-full">Bridal Dresses</span>
+              <!-- Image + Details -->
+              <div class="flex items-start gap-4">
+                <div class="w-1/3">
+                  <img src="after.jpg" alt="Etsy Listing" class="w-full rounded-md aspect-square object-cover" />
+                </div>
+                <div class="w-2/3 space-y-2 text-sm">
+                  <p class="font-medium text-gray-800">💍 Minimalist Off-Shoulder Satin Wedding Dress</p>
+                  <p class="text-gray-600 text-xs">Modern bridal gown with off-shoulder corset design and soft satin finish.</p>
+                  <p class="text-[#F56400] font-bold mt-2">$200 USD</p>
+                  <div class="mt-2">
+                    <span class="inline-block bg-[#F56400] text-white text-xs px-3 py-1 rounded-full">Bridal Dresses</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tags -->
+              <div class="pt-2 border-t border-gray-100 text-xs text-gray-600">
+                <p><span class="font-medium text-[#F56400]">Tags:</span> elopement dress, corset wedding dress, minimalist gown...</p>
+              </div>
+
+              <!-- Metrics -->
+              <div class="pt-3 border-t border-gray-200 grid grid-cols-3 gap-2 text-center">
+                <div>
+                  <p class="text-xs text-gray-500">Characters</p>
+                  <p class="font-bold text-[#F56400]">1,400+</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-500">SEO Tags</p>
+                  <p class="font-bold text-[#F56400]">13</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-500">AI Time</p>
+                  <p class="font-bold text-[#F56400]">15 sec</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Tags -->
-        <div class="pt-2 border-t border-gray-100 text-xs text-gray-600">
-          <p><span class="font-medium text-[#F56400]">Tags:</span> elopement dress, corset wedding dress, minimalist gown...</p>
+    <!-- Process steps under the flowchart (Icon Summary Grid) -->
+    <div class="mt-20 bg-white p-6 md:p-8 rounded-xl shadow-sm">
+      <div class="grid md:grid-cols-4 gap-4 text-center">
+        <div class="p-4">
+          <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-[#F56400] font-bold">1</span>
+          </div>
+          <h4 class="font-medium mb-1">Upload Photo</h4>
+          <p class="text-sm text-gray-500">Simple shot of your product</p>
         </div>
 
-        <!-- Metrics -->
-        <div class="pt-3 border-t border-gray-200 grid grid-cols-3 gap-2 text-center">
-          <div>
-            <p class="text-xs text-gray-500">Characters</p>
-            <p class="font-bold text-[#F56400]">1,400+</p>
+        <div class="p-4">
+          <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-[#F56400] font-bold">2</span>
           </div>
-          <div>
-            <p class="text-xs text-gray-500">SEO Tags</p>
-            <p class="font-bold text-[#F56400]">13</p>
+          <h4 class="font-medium mb-1">AI Processing</h4>
+          <p class="text-sm text-gray-500">Magic happens in seconds</p>
+        </div>
+
+        <div class="p-4">
+          <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-[#F56400] font-bold">3</span>
           </div>
-          <div>
-            <p class="text-xs text-gray-500">AI Time</p>
-            <p class="font-bold text-[#F56400]">15 sec</p>
+          <h4 class="font-medium mb-1">Content Generation</h4>
+          <p class="text-sm text-gray-500">Optimized for Etsy's algorithm</p>
+        </div>
+
+        <div class="p-4">
+          <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-[#F56400] font-bold">4</span>
           </div>
+          <h4 class="font-medium mb-1">Ready to Publish</h4>
+          <p class="text-sm text-gray-500">Copy & paste to your shop</p>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Process steps under the flowchart (Icon Summary Grid) -->
-<div class="mt-20 bg-white p-6 md:p-8 rounded-xl shadow-sm">
-  <div class="grid md:grid-cols-4 gap-4 text-center">
-    <div class="p-4">
-      <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-        <span class="text-[#F56400] font-bold">1</span>
+    <!-- Final Total Process Time Summary -->
+    <div class="mt-12 text-center">
+      <div class="inline-block bg-[#F3F1E8] px-6 py-3 rounded-lg border-l-4 border-[#F56400]">
+        <p class="font-bold text-xl">Total Process Time: <span class="text-[#F56400]">Just 2 Minutes</span></p>
+        <p class="text-gray-600 text-sm mt-1">(Compared to 2+ hours with traditional methods)</p>
       </div>
-      <h4 class="font-medium mb-1">Upload Photo</h4>
-      <p class="text-sm text-gray-500">Simple shot of your product</p>
-    </div>
-
-    <div class="p-4">
-      <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-        <span class="text-[#F56400] font-bold">2</span>
-      </div>
-      <h4 class="font-medium mb-1">AI Processing</h4>
-      <p class="text-sm text-gray-500">Magic happens in seconds</p>
-    </div>
-
-    <div class="p-4">
-      <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-        <span class="text-[#F56400] font-bold">3</span>
-      </div>
-      <h4 class="font-medium mb-1">Content Generation</h4>
-      <p class="text-sm text-gray-500">Optimized for Etsy's algorithm</p>
-    </div>
-
-    <div class="p-4">
-      <div class="w-10 h-10 bg-[#F56400] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-        <span class="text-[#F56400] font-bold">4</span>
-      </div>
-      <h4 class="font-medium mb-1">Ready to Publish</h4>
-      <p class="text-sm text-gray-500">Copy & paste to your shop</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Final Total Process Time Summary (OUTSIDE grid) -->
-<div class="mt-12 text-center">
-  <div class="inline-block bg-[#F3F1E8] px-6 py-3 rounded-lg border-l-4 border-[#F56400]">
-    <p class="font-bold text-xl">Total Process Time: <span class="text-[#F56400]">Just 2 Minutes</span></p>
-    <p class="text-gray-600 text-sm mt-1">(Compared to 2+ hours with traditional methods)</p>
-  </div>
-</div>
-
-
+<!-- JavaScript for toggle functions -->
+<script>
+  function toggleTags() {
+    const tagsElement = document.getElementById('allTags');
+    tagsElement.classList.toggle('hidden');
+  }
+  
+  function toggleDescription() {
+    const descElement = document.getElementById('fullDescription');
+    descElement.classList.toggle('hidden');
+  }
+</script>
 <!-- Testimonials -->
 <section class="py-20 bg-gray-50 px-6">
   <div class="container mx-auto max-w-6xl">
