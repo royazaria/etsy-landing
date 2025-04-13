@@ -928,13 +928,13 @@
               <div class="grid grid-cols-2 gap-4 mt-2">
                 <label class="cursor-pointer relative">
                   <input type="radio" name="useVA" value="yes" class="absolute opacity-0 w-0 h-0" id="useVAYes">
-                  <span class="block py-3 px-4 text-center rounded-lg bg-white border-2 border-gray-200 hover:border-[#F56400] transition-colors peer-checked:bg-[#F56400] peer-checked:text-white peer-checked:border-[#F56400]" id="vaYesLabel">
+                  <span class="block py-3 px-4 text-center rounded-lg bg-white border-2 border-gray-200 hover:border-[#F56400] transition-colors" id="vaYesLabel">
                     Yes, I have a VA
                   </span>
                 </label>
                 <label class="cursor-pointer relative">
                   <input type="radio" name="useVA" value="no" class="absolute opacity-0 w-0 h-0" id="useVANo" checked>
-                  <span class="block py-3 px-4 text-center rounded-lg bg-white border-2 border-gray-200 hover:border-[#F56400] transition-colors peer-checked:bg-[#F56400] peer-checked:text-white peer-checked:border-[#F56400]" id="vaNoLabel">
+                  <span class="block py-3 px-4 text-center rounded-lg bg-white border-2 border-gray-200 hover:border-[#F56400] transition-colors" id="vaNoLabel">
                     No, I do it myself
                   </span>
                 </label>
@@ -1243,6 +1243,7 @@
       vaRateContainer.classList.remove('hidden');
       vaListingsPerDayContainer.classList.remove('hidden');
       minutesPerListingContainer.classList.add('hidden');
+      hourlyRateContainer.classList.add('hidden');
       // Style the VA buttons
       vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
       vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
@@ -1250,112 +1251,16 @@
       vaRateContainer.classList.add('hidden');
       vaListingsPerDayContainer.classList.add('hidden');
       minutesPerListingContainer.classList.remove('hidden');
+      hourlyRateContainer.classList.remove('hidden');
       // Style the VA buttons
       vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
       vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
     }
     showRecalculating();
-    setTimeout(calculateROI, 500
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const listingsInput = document.getElementById('listingsPerMonth');
-    const minutesInput = document.getElementById('minutesPerListing');
-    const hourlyRateInput = document.getElementById('hourlyRate');
-    const toolsCostInput = document.getElementById('toolsCost');
-    const eproAiPlan = document.getElementById('eproAiPlan');
-    const vaSalaryInput = document.getElementById('vaSalary');
-    const vaListingsPerDayInput = document.getElementById('vaListingsPerDay');
-
-    const useVAYes = document.getElementById('useVAYes');
-    const useVANo = document.getElementById('useVANo');
-
-    const vaRateContainer = document.getElementById('vaRateContainer');
-    const vaListingsPerDayContainer = document.getElementById('vaListingsPerDayContainer');
-    const minutesPerListingContainer = document.getElementById('minutesPerListingContainer');
-    const hourlyRateContainer = document.getElementById('hourlyRateContainer');
-
-    const displayMonthlyListings = document.getElementById('displayMonthlyListings');
-    const displayEproCost = document.getElementById('displayEproCost');
-    const displayVaCost = document.getElementById('displayVaCost');
-    const displayToolSavings = document.getElementById('displayToolSavings');
-    const netBenefit = document.getElementById('netBenefit');
-
-    function calculate() {
-      const useVA = useVAYes.checked;
-      let listings = parseInt(listingsInput.value);
-
-      if (useVA) {
-        vaRateContainer.classList.remove('hidden');
-        vaListingsPerDayContainer.classList.remove('hidden');
-        minutesPerListingContainer.classList.add('hidden');
-        hourlyRateContainer.classList.add('hidden');
-
-        listings = parseInt(vaListingsPerDayInput.value) * 22; // Estimate monthly output
-        displayVaCost.textContent = `$${parseInt(vaSalaryInput.value)}`;
-      } else {
-        vaRateContainer.classList.add('hidden');
-        vaListingsPerDayContainer.classList.add('hidden');
-        minutesPerListingContainer.classList.remove('hidden');
-        hourlyRateContainer.classList.remove('hidden');
-      }
-
-      const planCost = parseInt(eproAiPlan.value);
-      const toolSavings = parseInt(toolsCostInput.value);
-      const eproCost = listings * planCost;
-
-      displayMonthlyListings.textContent = listings;
-      displayEproCost.textContent = `$${eproCost}`;
-      displayToolSavings.textContent = `$${toolSavings}`;
-
-      let benefit;
-      if (useVA) {
-        const vaCost = parseInt(vaSalaryInput.value);
-        benefit = vaCost + toolSavings - eproCost;
-      } else {
-        const minutesPerListing = parseInt(minutesInput.value);
-        const hourlyRate = parseInt(hourlyRateInput.value);
-        const savedMinutes = listings * (minutesPerListing - 2);
-        const savedDollars = (savedMinutes / 60) * hourlyRate;
-        benefit = Math.round(savedDollars + toolSavings - eproCost);
-      }
-
-      netBenefit.textContent = `$${benefit}`;
-    }
-
-    listingsInput.addEventListener('input', calculate);
-    minutesInput.addEventListener('input', calculate);
-    hourlyRateInput.addEventListener('input', calculate);
-    toolsCostInput.addEventListener('input', calculate);
-    eproAiPlan.addEventListener('change', calculate);
-    vaSalaryInput.addEventListener('input', calculate);
-    vaListingsPerDayInput.addEventListener('input', calculate);
-    useVAYes.addEventListener('change', calculate);
-    useVANo.addEventListener('change', calculate);
-
-    calculate();
-  });
-</script>
-function handleVAToggle() {
-  if (useVAYes.checked) {
-    vaRateContainer.classList.remove('hidden');
-    vaListingsPerDayContainer.classList.remove('hidden');
-    minutesPerListingContainer.classList.add('hidden');
-    // Style the VA buttons
-    vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-    vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-  } else {
-    vaRateContainer.classList.add('hidden');
-    vaListingsPerDayContainer.classList.add('hidden');
-    minutesPerListingContainer.classList.remove('hidden');
-    // Style the VA buttons
-    vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-    vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    setTimeout(calculateROI, 500);
   }
-  showRecalculating();
-  setTimeout(calculateROI, 500);
-}
 
-function showRecalculating() {
+  function showRecalculating() {
   recalculating.style.display = 'inline-block';
   
   // Progress animation
@@ -1472,10 +1377,20 @@ document.querySelectorAll('input[name="useVA"]').forEach(radio => {
     if (this.value === 'yes') {
       vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
       vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+      vaRateContainer.classList.remove('hidden');
+      vaListingsPerDayContainer.classList.remove('hidden');
+      minutesPerListingContainer.classList.add('hidden');
+      hourlyRateContainer.classList.add('hidden');
     } else {
       vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
       vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+      vaRateContainer.classList.add('hidden');
+      vaListingsPerDayContainer.classList.add('hidden');
+      minutesPerListingContainer.classList.remove('hidden');
+      hourlyRateContainer.classList.remove('hidden');
     }
+    showRecalculating();
+    setTimeout(calculateROI, 500);
   });
 });
 
@@ -1526,15 +1441,6 @@ function checkForAmazingSavings() {
 // Check for amazing savings after calculating
 calculateROI();
 setTimeout(checkForAmazingSavings, 1000);
-
-// Recalculate when any input changes
-listingsPerMonth.addEventListener('input', calculateROI);
-minutesPerListing.addEventListener('input', calculateROI);
-vaListingsPerDay.addEventListener('input', calculateROI);
-vaSalary.addEventListener('input', calculateROI);
-hourlyRate.addEventListener('input', calculateROI);
-toolsCost.addEventListener('input', calculateROI);
-eproAiPlan.addEventListener('change', calculateROI);
 
 // Easter egg - clicking the progress bar
 calcProgress.addEventListener('click', function() {
