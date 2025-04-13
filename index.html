@@ -807,69 +807,64 @@
     </div>
   </div>
 </section>
-<!-- ROI Calculator Section -->
+<!-- ROI Calculator Section (FULL VERSION: Updated VA logic + inputs + JS) -->
 <section class="py-20 bg-gray-50 px-6">
   <div class="container mx-auto max-w-5xl">
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Calculate Your Time & Money Savings</h2>
     <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
       See exactly how much time and money you'll save by switching to ePro AI
     </p>
-    
+
     <div class="bg-white rounded-xl shadow-sm p-6 md:p-8 lg:p-10">
       <div class="grid md:grid-cols-2 gap-10">
         <!-- Calculator Inputs -->
         <div>
           <h3 class="text-2xl font-bold mb-6">Your Current Etsy Workflow</h3>
-          
+
           <div class="space-y-8">
             <div>
               <label class="block text-gray-700 font-medium mb-2">
                 New listings you create per month
               </label>
-              <div class="flex items-center">
-                <input 
-                  type="range" 
-                  min="1" 
-                  max="100" 
-                  value="10" 
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#F56400]" 
-                  id="listingsPerMonth"
-                />
-                <span class="text-[#F56400] font-bold ml-4 min-w-[40px]" id="listingsPerMonthValue">10</span>
-              </div>
+              <input 
+                type="number" 
+                min="1" 
+                value="10" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
+                id="listingsPerMonth"
+              />
             </div>
-            
-            <div>
+
+            <div id="minutesPerListingContainer">
               <label class="block text-gray-700 font-medium mb-2">
                 Minutes spent per listing currently
               </label>
-              <div class="flex items-center">
-                <input 
-                  type="range" 
-                  min="30" 
-                  max="120" 
-                  value="60" 
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#F56400]" 
-                  id="minutesPerListing"
-                />
-                <span class="text-[#F56400] font-bold ml-4 min-w-[40px]" id="minutesPerListingValue">60</span>
-              </div>
+              <input 
+                type="number" 
+                min="1" 
+                max="300" 
+                value="60" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
+                id="minutesPerListing"
+              />
             </div>
-            
-            <div>
+
+            <div id="vaListingsPerDayContainer" class="hidden">
               <label class="block text-gray-700 font-medium mb-2">
-                <div class="flex items-center">
-                  <span>Do you use a virtual assistant?</span>
-                  <div class="ml-2 relative group">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-black text-white text-xs rounded p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity">
-                      If you use a VA to create listings, factor in their monthly salary or cost.
-                    </div>
-                  </div>
-                </div>
+                Listings uploaded per day by VA
               </label>
+              <input 
+                type="number" 
+                min="1" 
+                max="100" 
+                value="5" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
+                id="vaListingsPerDay"
+              />
+            </div>
+
+            <div>
+              <label class="block text-gray-700 font-medium mb-2">Do you use a virtual assistant?</label>
               <div class="flex items-center space-x-4">
                 <label class="inline-flex items-center">
                   <input type="radio" name="useVA" value="yes" class="form-radio text-[#F56400]" id="useVAYes">
@@ -880,57 +875,50 @@
                   <span class="ml-2">No</span>
                 </label>
               </div>
-              
-              <div class="mt-4 hidden" id="vaRateContainer">
-                <label class="block text-gray-700 font-medium mb-2">
-                  VA's monthly salary ($)
-                </label>
-                <div class="flex items-center">
-                  <input 
-                    type="number" 
-                    min="50" 
-                    max="1000" 
-                    value="250" 
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
-                    id="vaSalary"
-                  />
-                </div>
-              </div>
             </div>
-            
-            <div id="yourTimeValueContainer">
+
+            <div class="hidden" id="vaRateContainer">
+              <label class="block text-gray-700 font-medium mb-2">
+                VA's monthly salary ($)
+              </label>
+              <input 
+                type="number" 
+                min="50" 
+                max="2000" 
+                value="250" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
+                id="vaSalary"
+              />
+            </div>
+
+            <div id="hourlyRateContainer">
               <label class="block text-gray-700 font-medium mb-2">
                 Value of your time ($/hour)
               </label>
-              <div class="flex items-center">
-                <input 
-                  type="range" 
-                  min="15" 
-                  max="100" 
-                  value="25" 
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#F56400]" 
-                  id="hourlyRate"
-                />
-                <span class="text-[#F56400] font-bold ml-4 min-w-[40px]" id="hourlyRateValue">$25</span>
-              </div>
+              <input 
+                type="number" 
+                min="10" 
+                max="500" 
+                value="25" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
+                id="hourlyRate"
+              />
             </div>
-            
+
             <div>
               <label class="block text-gray-700 font-medium mb-2">
                 Monthly cost of other tools ($)
               </label>
-              <div class="flex items-center">
-                <input 
-                  type="number" 
-                  min="0" 
-                  max="500" 
-                  value="30" 
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
-                  id="toolsCost"
-                />
-              </div>
+              <input 
+                type="number" 
+                min="0" 
+                max="1000" 
+                value="30" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent" 
+                id="toolsCost"
+              />
             </div>
-            
+
             <div>
               <label class="block text-gray-700 font-medium mb-2">
                 ePro AI plan
@@ -942,257 +930,125 @@
               </select>
             </div>
           </div>
-          
-          <!-- With ePro AI -->
+
           <div class="mt-8 bg-[#F3F1E8] p-4 rounded-lg">
             <h4 class="font-bold text-[#F56400]">With ePro AI</h4>
             <p class="text-gray-700">Average time per listing: <span class="font-bold">2 minutes</span></p>
           </div>
         </div>
-        
+
         <!-- Results Display -->
         <div class="bg-gray-50 rounded-xl p-6">
           <h3 class="text-2xl font-bold mb-6">Your Potential Savings</h3>
-          
-          <!-- Monthly Impact -->
-          <div class="mb-6">
-            <h4 class="text-lg font-bold text-gray-700 mb-4">Monthly Impact</h4>
-            <div class="space-y-4">
-              <div class="flex justify-between items-center border-b border-gray-200 pb-2">
-                <span class="text-gray-600">Hours saved per month:</span>
-                <span class="font-bold text-xl" id="hoursSaved">9.7 hours</span>
-              </div>
-              <div class="flex justify-between items-center border-b border-gray-200 pb-2">
-                <span class="text-gray-600">Value of time saved:</span>
-                <span class="font-bold text-xl text-green-600" id="valueSaved">$242</span>
-              </div>
-              <div class="flex justify-between items-center border-b border-gray-200 pb-2">
-                <span class="text-gray-600">Tool subscription savings:</span>
-                <span class="font-bold text-xl text-green-600" id="toolSavings">$30</span>
-              </div>
-              <div class="flex justify-between items-center border-b border-gray-200 pb-2">
-                <span class="text-gray-600">Cost of ePro AI:</span>
-                <span class="font-bold text-xl text-red-500" id="eproAiCost">$20</span>
-              </div>
-              <div class="flex justify-between items-center pt-2">
-                <span class="text-gray-800 font-medium">Net monthly benefit:</span>
-                <span class="font-bold text-2xl text-[#F56400]" id="netBenefit">$252</span>
-              </div>
+
+          <div class="space-y-6">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Estimated monthly listings:</span>
+              <span class="font-bold text-xl" id="displayMonthlyListings">220</span>
             </div>
-          </div>
-          
-          <!-- Yearly Impact -->
-          <div class="mb-6">
-            <h4 class="text-lg font-bold text-gray-700 mb-4">Yearly Impact</h4>
-            <div class="space-y-4">
-              <div class="flex justify-between items-center border-b border-gray-200 pb-2">
-                <span class="text-gray-600">Total hours saved:</span>
-                <span class="font-bold text-xl" id="yearlyHoursSaved">116 hours</span>
-              </div>
-              <div class="flex justify-between items-center border-b border-gray-200 pb-2">
-                <span class="text-gray-600">Total value saved:</span>
-                <span class="font-bold text-xl text-green-600" id="yearlyValueSaved">$3,024</span>
-              </div>
-              <div class="flex justify-between items-center pt-2">
-                <span class="text-gray-800 font-medium">Annual ROI:</span>
-                <span class="font-bold text-2xl text-[#F56400]" id="annualRoi">1,260%</span>
-              </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Estimated ePro AI cost:</span>
+              <span class="font-bold text-xl text-red-500" id="displayEproCost">$440</span>
             </div>
-          </div>
-          
-          <!-- Visual Element -->
-          <div class="mt-8">
-            <div class="bg-white rounded-lg p-4 flex flex-col items-center">
-              <div class="w-full">
-                <div class="relative pt-1">
-                  <div class="flex mb-2 items-center justify-between">
-                    <div>
-                      <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-white bg-red-500">
-                        Current Time
-                      </span>
-                    </div>
-                    <div>
-                      <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-white bg-[#F56400]">
-                        With ePro AI
-                      </span>
-                    </div>
-                  </div>
-                  <div class="flex">
-                    <div class="w-full bg-red-200 rounded-l-full">
-                      <div class="bg-red-500 text-xs leading-none py-3 text-center text-white rounded-l-full" id="currentTimeBar" style="width: 97%"></div>
-                    </div>
-                    <div class="w-full bg-orange-200 rounded-r-full">
-                      <div class="bg-[#F56400] text-xs leading-none py-3 text-center text-white rounded-r-full" id="eproAiTimeBar" style="width: 3%"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="text-center mt-4">
-                <div class="text-xl font-bold" id="timeReductionPercentage">97% Time Reduction</div>
-              </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Estimated cost of VA:</span>
+              <span class="font-bold text-xl text-gray-800" id="displayVaCost">$250</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Savings from tools cut:</span>
+              <span class="font-bold text-xl text-green-600" id="displayToolSavings">$30</span>
+            </div>
+            <div class="pt-3 border-t border-gray-300 flex justify-between items-center">
+              <span class="text-gray-800 font-medium">Net monthly benefit:</span>
+              <span class="font-bold text-2xl text-[#F56400]" id="netBenefit">$XXX</span>
             </div>
           </div>
         </div>
-      </div>
-      
-      <!-- Call to Action -->
-      <div class="mt-10 text-center">
-        <p class="text-xl font-bold mb-4">Start saving <span id="ctaHoursSaved" class="text-[#F56400]">9.7 hours</span> and <span id="ctaDollarsSaved" class="text-[#F56400]">$252</span> every month</p>
-        <a href="#early-access" class="inline-block bg-[#F56400] text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-[#E45A00] transition-colors">
-          Get Early Access
-        </a>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Input elements
-    const listingsPerMonth = document.getElementById('listingsPerMonth');
-    const minutesPerListing = document.getElementById('minutesPerListing');
-    const hourlyRate = document.getElementById('hourlyRate');
-    const toolsCost = document.getElementById('toolsCost');
+  document.addEventListener('DOMContentLoaded', function () {
+    const listingsInput = document.getElementById('listingsPerMonth');
+    const minutesInput = document.getElementById('minutesPerListing');
+    const hourlyRateInput = document.getElementById('hourlyRate');
+    const toolsCostInput = document.getElementById('toolsCost');
     const eproAiPlan = document.getElementById('eproAiPlan');
+    const vaSalaryInput = document.getElementById('vaSalary');
+    const vaListingsPerDayInput = document.getElementById('vaListingsPerDay');
+
     const useVAYes = document.getElementById('useVAYes');
     const useVANo = document.getElementById('useVANo');
-    const vaSalary = document.getElementById('vaSalary');
+
     const vaRateContainer = document.getElementById('vaRateContainer');
-    const yourTimeValueContainer = document.getElementById('yourTimeValueContainer');
-    
-    // Display elements for sliders
-    const listingsPerMonthValue = document.getElementById('listingsPerMonthValue');
-    const minutesPerListingValue = document.getElementById('minutesPerListingValue');
-    const hourlyRateValue = document.getElementById('hourlyRateValue');
-    
-    // Result display elements
-    const hoursSaved = document.getElementById('hoursSaved');
-    const valueSaved = document.getElementById('valueSaved');
-    const toolSavings = document.getElementById('toolSavings');
-    const eproAiCost = document.getElementById('eproAiCost');
+    const vaListingsPerDayContainer = document.getElementById('vaListingsPerDayContainer');
+    const minutesPerListingContainer = document.getElementById('minutesPerListingContainer');
+    const hourlyRateContainer = document.getElementById('hourlyRateContainer');
+
+    const displayMonthlyListings = document.getElementById('displayMonthlyListings');
+    const displayEproCost = document.getElementById('displayEproCost');
+    const displayVaCost = document.getElementById('displayVaCost');
+    const displayToolSavings = document.getElementById('displayToolSavings');
     const netBenefit = document.getElementById('netBenefit');
-    const yearlyHoursSaved = document.getElementById('yearlyHoursSaved');
-    const yearlyValueSaved = document.getElementById('yearlyValueSaved');
-    const annualRoi = document.getElementById('annualRoi');
-    const timeReductionPercentage = document.getElementById('timeReductionPercentage');
-    const currentTimeBar = document.getElementById('currentTimeBar');
-    const eproAiTimeBar = document.getElementById('eproAiTimeBar');
-    const ctaHoursSaved = document.getElementById('ctaHoursSaved');
-    const ctaDollarsSaved = document.getElementById('ctaDollarsSaved');
-    
-    // Update display values for sliders
-    listingsPerMonth.addEventListener('input', function() {
-      listingsPerMonthValue.textContent = this.value;
-      calculateSavings();
-    });
-    
-    minutesPerListing.addEventListener('input', function() {
-      minutesPerListingValue.textContent = this.value;
-      calculateSavings();
-    });
-    
-    hourlyRate.addEventListener('input', function() {
-      hourlyRateValue.textContent = '$' + this.value;
-      calculateSavings();
-    });
-    
-    toolsCost.addEventListener('input', calculateSavings);
-    eproAiPlan.addEventListener('change', calculateSavings);
-    vaSalary.addEventListener('input', calculateSavings);
-    
-    // Handle VA radio buttons
-    useVAYes.addEventListener('change', function() {
-      if (this.checked) {
-        vaRateContainer.classList.remove('hidden');
-        yourTimeValueContainer.classList.add('hidden');
-        calculateSavings();
-      }
-    });
-    
-    useVANo.addEventListener('change', function() {
-      if (this.checked) {
-        vaRateContainer.classList.add('hidden');
-        yourTimeValueContainer.classList.remove('hidden');
-        calculateSavings();
-      }
-    });
-    
-    // Calculate savings function
-    function calculateSavings() {
-      // Get input values
-      const listings = parseInt(listingsPerMonth.value);
-      const minutesPerListing = parseInt(document.getElementById('minutesPerListing').value);
+
+    function calculate() {
       const useVA = useVAYes.checked;
-      const toolsCostValue = parseInt(toolsCost.value);
-      const planCost = parseInt(eproAiPlan.value);
-      
-      // Constants
-      const eproAiMinutesPerListing = 2;
-      
-      // Calculate time savings
-      const currentTimeInMinutes = listings * minutesPerListing;
-      const eproAiTimeInMinutes = listings * eproAiMinutesPerListing;
-      const minutesSaved = currentTimeInMinutes - eproAiTimeInMinutes;
-      const hoursSavedValue = (minutesSaved / 60).toFixed(1);
-      
-      // Calculate financial value of time saved
-      let timeSavedValue;
+      let listings = parseInt(listingsInput.value);
+
       if (useVA) {
-        // If using VA, calculate based on VA salary
-        const monthlySalary = parseInt(vaSalary.value);
-        // Assuming VA works 160 hours per month (40 hours/week * 4 weeks)
-        const vaHourlyRate = monthlySalary / 160;
-        timeSavedValue = (hoursSavedValue * vaHourlyRate).toFixed(0);
+        vaRateContainer.classList.remove('hidden');
+        vaListingsPerDayContainer.classList.remove('hidden');
+        minutesPerListingContainer.classList.add('hidden');
+        hourlyRateContainer.classList.add('hidden');
+
+        listings = parseInt(vaListingsPerDayInput.value) * 22; // Estimate monthly output
+        displayVaCost.textContent = `$${parseInt(vaSalaryInput.value)}`;
       } else {
-        // If not using VA, calculate based on personal hourly rate
-        const hourlyRateValue = parseInt(hourlyRate.value);
-        timeSavedValue = (hoursSavedValue * hourlyRateValue).toFixed(0);
+        vaRateContainer.classList.add('hidden');
+        vaListingsPerDayContainer.classList.add('hidden');
+        minutesPerListingContainer.classList.remove('hidden');
+        hourlyRateContainer.classList.remove('hidden');
       }
-      
-      // Calculate ePro AI cost and net benefit
-      const eproAiCostValue = (listings * planCost).toFixed(0);
-      const netBenefitValue = (parseInt(timeSavedValue) + toolsCostValue - parseInt(eproAiCostValue)).toFixed(0);
-      
-      // Calculate yearly values
-      const yearlyHoursSavedValue = (hoursSavedValue * 12).toFixed(0);
-      const yearlyValueSavedValue = (netBenefitValue * 12).toFixed(0);
-      
-      // Calculate ROI: (yearly benefit / yearly cost) * 100
-      let roiValue = 0;
-      if (parseInt(eproAiCostValue) > 0) {
-        roiValue = ((parseInt(netBenefitValue) / parseInt(eproAiCostValue)) * 100).toFixed(0);
+
+      const planCost = parseInt(eproAiPlan.value);
+      const toolSavings = parseInt(toolsCostInput.value);
+      const eproCost = listings * planCost;
+
+      displayMonthlyListings.textContent = listings;
+      displayEproCost.textContent = `$${eproCost}`;
+      displayToolSavings.textContent = `$${toolSavings}`;
+
+      let benefit;
+      if (useVA) {
+        const vaCost = parseInt(vaSalaryInput.value);
+        benefit = vaCost + toolSavings - eproCost;
+      } else {
+        const minutesPerListing = parseInt(minutesInput.value);
+        const hourlyRate = parseInt(hourlyRateInput.value);
+        const savedMinutes = listings * (minutesPerListing - 2);
+        const savedDollars = (savedMinutes / 60) * hourlyRate;
+        benefit = Math.round(savedDollars + toolSavings - eproCost);
       }
-      
-      // Calculate time reduction percentage
-      const timeReductionPercent = ((minutesSaved / currentTimeInMinutes) * 100).toFixed(0);
-      
-      // Update display elements
-      hoursSaved.textContent = hoursSavedValue + ' hours';
-      valueSaved.textContent = '$' + timeSavedValue;
-      toolSavings.textContent = '$' + toolsCostValue;
-      eproAiCost.textContent = '$' + eproAiCostValue;
-      netBenefit.textContent = '$' + netBenefitValue;
-      
-      yearlyHoursSaved.textContent = yearlyHoursSavedValue + ' hours';
-      yearlyValueSaved.textContent = '$' + yearlyValueSavedValue;
-      annualRoi.textContent = roiValue + '%';
-      
-      timeReductionPercentage.textContent = timeReductionPercent + '% Time Reduction';
-      
-      // Update visualization bar lengths
-      const totalTime = minutesPerListing + eproAiMinutesPerListing;
-      currentTimeBar.style.width = ((minutesPerListing / totalTime) * 100) + '%';
-      eproAiTimeBar.style.width = ((eproAiMinutesPerListing / totalTime) * 100) + '%';
-      
-      // Update Call to Action
-      ctaHoursSaved.textContent = hoursSavedValue + ' hours';
-      ctaDollarsSaved.textContent = '$' + netBenefitValue;
+
+      netBenefit.textContent = `$${benefit}`;
     }
-    
-    // Run initial calculation
-    calculateSavings();
+
+    listingsInput.addEventListener('input', calculate);
+    minutesInput.addEventListener('input', calculate);
+    hourlyRateInput.addEventListener('input', calculate);
+    toolsCostInput.addEventListener('input', calculate);
+    eproAiPlan.addEventListener('change', calculate);
+    vaSalaryInput.addEventListener('input', calculate);
+    vaListingsPerDayInput.addEventListener('input', calculate);
+    useVAYes.addEventListener('change', calculate);
+    useVANo.addEventListener('change', calculate);
+
+    calculate();
   });
 </script>
+
 <!-- Process Showcase Section -->
 <section id="process-showcase" class="py-20 bg-[#F3F1E8] px-6">
   <div class="container mx-auto max-w-6xl">
