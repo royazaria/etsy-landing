@@ -833,7 +833,7 @@
         </svg>
       </h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        Dropshippers who switch to ePro AI save an average of <span class="font-bold underline decoration-[#F56400]">28 hours per month</span> and <span class="font-bold underline decoration-[#F56400]">$420 in costs</span>
+        Dropshippers using AI tools save an average of <span class="font-bold underline decoration-[#F56400]">28 hours per month</span> and <span class="font-bold underline decoration-[#F56400]">$420 in costs</span>
       </p>
     </div>
 
@@ -1037,7 +1037,6 @@
               <div>
                 <h4 class="font-bold text-lg text-[#F56400]">With ePro AI</h4>
                 <p class="text-gray-700">Average time per listing: <span class="font-bold">2 minutes</span> 🔥</p>
-                <p class="text-gray-700 text-sm mt-1">Trusted by 1,200+ dropshippers worldwide</p>
               </div>
             </div>
           </div>
@@ -1170,240 +1169,232 @@
 
 <!-- JavaScript for calculator functionality -->
 <script>
-  // DOM Elements
-  const listingsPerMonth = document.getElementById('listingsPerMonth');
-  const minutesPerListing = document.getElementById('minutesPerListing');
-  const vaListingsPerDay = document.getElementById('vaListingsPerDay');
-  const useVAYes = document.getElementById('useVAYes');
-  const useVANo = document.getElementById('useVANo');
-  const vaYesLabel = document.getElementById('vaYesLabel');
-  const vaNoLabel = document.getElementById('vaNoLabel');
-  const vaSalary = document.getElementById('vaSalary');
-  const hourlyRate = document.getElementById('hourlyRate');
-  const toolsCost = document.getElementById('toolsCost');
-  const eproAiPlan = document.getElementById('eproAiPlan');
-  
-  // Display Elements
-  const displayMonthlyListings = document.getElementById('displayMonthlyListings');
-  const displayCurrentHours = document.getElementById('displayCurrentHours');
-  const displayEproHours = document.getElementById('displayEproHours');
-  const displayTimeSaved = document.getElementById('displayTimeSaved');
-  const displayEproCost = document.getElementById('displayEproCost');
-  const displayVaCost = document.getElementById('displayVaCost');
-  const displayToolSavings = document.getElementById('displayToolSavings');
-  const displayTimeSavingsValue = document.getElementById('displayTimeSavingsValue');
-  const netBenefit = document.getElementById('netBenefit');
-  const timeChangeIndicator = document.getElementById('timeChangeIndicator');
-  const benefitChangeIndicator = document.getElementById('benefitChangeIndicator');
-  const yearlyNetBenefit = document.getElementById('yearlyNetBenefit');
-  const yearlyTimeSaved = document.getElementById('yearlyTimeSaved');
-  const vacationDays = document.getElementById('vacationDays');
-  const calcProgress = document.getElementById('calcProgress');
-  const perListing = document.getElementById('perListing');
-  const recalculating = document.getElementById('recalculating');
-  
-  // Container Elements
-  const minutesPerListingContainer = document.getElementById('minutesPerListingContainer');
-  const vaListingsPerDayContainer = document.getElementById('vaListingsPerDayContainer');
-  const vaRateContainer = document.getElementById('vaRateContainer');
-  const hourlyRateContainer = document.getElementById('hourlyRateContainer');
-  const vaCostRow = document.getElementById('vaCostRow');
-  
-  // Constants
-  const EPRO_AI_MINUTES_PER_LISTING = 2;
-  const MINUTES_PER_HOUR = 60;
-  const DAYS_PER_MONTH = 30;
-  const MONTHS_PER_YEAR = 12;
-  const HOURS_PER_WORKDAY = 8;
-  
-  // Animation settings
-  let progressInterval;
-  
-  // Initialize
-  calculateROI();
-  
-  // Event listeners
-  listingsPerMonth.addEventListener('input', handleInput);
-  minutesPerListing.addEventListener('input', handleInput);
-  vaListingsPerDay.addEventListener('input', handleInput);
-  useVAYes.addEventListener('change', handleVAToggle);
-  useVANo.addEventListener('change', handleVAToggle);
-  vaSalary.addEventListener('input', handleInput);
-  hourlyRate.addEventListener('input', handleInput);
-  toolsCost.addEventListener('input', handleInput);
-  eproAiPlan.addEventListener('change', handleInput);
-  
-  function handleInput() {
-    showRecalculating();
-    setTimeout(calculateROI, 500);
-  }
-  
-  function handleVAToggle() {
+  document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const listingsPerMonth = document.getElementById('listingsPerMonth');
+    const minutesPerListing = document.getElementById('minutesPerListing');
+    const vaListingsPerDay = document.getElementById('vaListingsPerDay');
+    const useVAYes = document.getElementById('useVAYes');
+    const useVANo = document.getElementById('useVANo');
+    const vaYesLabel = document.getElementById('vaYesLabel');
+    const vaNoLabel = document.getElementById('vaNoLabel');
+    const vaSalary = document.getElementById('vaSalary');
+    const hourlyRate = document.getElementById('hourlyRate');
+    const toolsCost = document.getElementById('toolsCost');
+    const eproAiPlan = document.getElementById('eproAiPlan');
+    
+    // Display Elements
+    const displayMonthlyListings = document.getElementById('displayMonthlyListings');
+    const displayCurrentHours = document.getElementById('displayCurrentHours');
+    const displayEproHours = document.getElementById('displayEproHours');
+    const displayTimeSaved = document.getElementById('displayTimeSaved');
+    const displayEproCost = document.getElementById('displayEproCost');
+    const displayVaCost = document.getElementById('displayVaCost');
+    const displayToolSavings = document.getElementById('displayToolSavings');
+    const displayTimeSavingsValue = document.getElementById('displayTimeSavingsValue');
+    const netBenefit = document.getElementById('netBenefit');
+    const timeChangeIndicator = document.getElementById('timeChangeIndicator');
+    const benefitChangeIndicator = document.getElementById('benefitChangeIndicator');
+    const yearlyNetBenefit = document.getElementById('yearlyNetBenefit');
+    const yearlyTimeSaved = document.getElementById('yearlyTimeSaved');
+    const vacationDays = document.getElementById('vacationDays');
+    const calcProgress = document.getElementById('calcProgress');
+    const perListing = document.getElementById('perListing');
+    const recalculating = document.getElementById('recalculating');
+    
+    // Container Elements
+    const minutesPerListingContainer = document.getElementById('minutesPerListingContainer');
+    const vaListingsPerDayContainer = document.getElementById('vaListingsPerDayContainer');
+    const vaRateContainer = document.getElementById('vaRateContainer');
+    const hourlyRateContainer = document.getElementById('hourlyRateContainer');
+    const vaCostRow = document.getElementById('vaCostRow');
+    
+    // Constants
+    const EPRO_AI_MINUTES_PER_LISTING = 2;
+    const MINUTES_PER_HOUR = 60;
+    const DAYS_PER_MONTH = 30;
+    const MONTHS_PER_YEAR = 12;
+    const HOURS_PER_WORKDAY = 8;
+    
+    // Animation settings
+    let progressInterval;
+    
+    // Initial styling for radio buttons
     if (useVAYes.checked) {
-      vaRateContainer.classList.remove('hidden');
-      vaListingsPerDayContainer.classList.remove('hidden');
-      minutesPerListingContainer.classList.add('hidden');
-      hourlyRateContainer.classList.add('hidden');
-      // Style the VA buttons
       vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-      vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
     } else {
-      vaRateContainer.classList.add('hidden');
-      vaListingsPerDayContainer.classList.add('hidden');
-      minutesPerListingContainer.classList.remove('hidden');
-      hourlyRateContainer.classList.remove('hidden');
-      // Style the VA buttons
-      vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
       vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
     }
-    showRecalculating();
-    setTimeout(calculateROI, 500);
-  }
-
-  function showRecalculating() {
-  recalculating.style.display = 'inline-block';
-  
-  // Progress animation
-  let progress = 0;
-  if (progressInterval) clearInterval(progressInterval);
-  
-  progressInterval = setInterval(() => {
-    progress += 5;
-    calcProgress.style.width = `${progress}%`;
     
-    if (progress >= 100) {
-      clearInterval(progressInterval);
-      setTimeout(() => {
-        recalculating.style.display = 'none';
-      }, 200);
+    function showRecalculating() {
+      recalculating.style.display = 'inline-block';
+      
+      // Progress animation
+      let progress = 0;
+      if (progressInterval) clearInterval(progressInterval);
+      
+      progressInterval = setInterval(() => {
+        progress += 5;
+        calcProgress.style.width = `${progress}%`;
+        
+        if (progress >= 100) {
+          clearInterval(progressInterval);
+          setTimeout(() => {
+            recalculating.style.display = 'none';
+          }, 200);
+        }
+      }, 25);
     }
-  }, 25);
-}
-
-function calculateROI() {
-  // Get values from inputs
-  const listings = parseInt(listingsPerMonth.value) || 10;
-  const minutes = parseInt(minutesPerListing.value) || 60;
-  const vaListings = parseInt(vaListingsPerDay.value) || 5;
-  const vaSalaryValue = parseInt(vaSalary.value) || 250;
-  const hourlyRateValue = parseInt(hourlyRate.value) || 25;
-  const toolsCostValue = parseInt(toolsCost.value) || 30;
-  const eproRate = parseInt(eproAiPlan.value) || 2;
-  
-  // Calculate time savings
-  let currentHours, eproHours, timeSaved;
-  
-  if (useVAYes.checked) {
-    // VA scenario - monthly listings are based on VA production
-    const vaMonthlyListings = vaListings * DAYS_PER_MONTH;
-    displayMonthlyListings.textContent = vaMonthlyListings;
     
-    // VA doesn't save time for owner, but we'll estimate it takes the VA 
-    // about 30 minutes per listing for comparison purposes
-    currentHours = 0; // Owner time is 0
-    eproHours = (vaMonthlyListings * EPRO_AI_MINUTES_PER_LISTING) / MINUTES_PER_HOUR;
-    timeSaved = 0; // No direct time saved for owner
-  } else {
-    // Owner does it themselves
-    displayMonthlyListings.textContent = listings;
-    currentHours = (listings * minutes) / MINUTES_PER_HOUR;
-    eproHours = (listings * EPRO_AI_MINUTES_PER_LISTING) / MINUTES_PER_HOUR;
-    timeSaved = currentHours - eproHours;
-  }
-  
-  // Calculate cost savings
-  const eproCost = listings * eproRate;
-  let vaCost = useVAYes.checked ? vaSalaryValue : 0;
-  const toolSavings = toolsCostValue;
-  const timeSavingsValue = timeSaved * hourlyRateValue;
-  
-  // Calculate net benefit
-  let benefit;
-  
-  if (useVAYes.checked) {
-    // For VA users, benefit = VA cost + tool savings - ePro AI cost
-    benefit = vaCost + toolSavings - eproCost;
-  } else {
-    // For self-doers, benefit = time savings value + tool savings - ePro AI cost
-    benefit = timeSavingsValue + toolSavings - eproCost;
-  }
-  
-  // Annual calculations
-  const yearlyBenefit = benefit * MONTHS_PER_YEAR;
-  const yearlyTimeSavedValue = timeSaved * MONTHS_PER_YEAR;
-  const workdaysSaved = yearlyTimeSavedValue / HOURS_PER_WORKDAY;
-  
-  // Update DOM with calculated values
-  displayCurrentHours.textContent = currentHours.toFixed(1);
-  displayEproHours.textContent = eproHours.toFixed(1);
-  displayTimeSaved.textContent = timeSaved.toFixed(1);
-  
-  const timeChangePercentage = currentHours > 0 ? (timeSaved / currentHours * 100).toFixed(0) : 0;
-  timeChangeIndicator.textContent = `↑ ${timeChangePercentage}%`;
-  
-  displayEproCost.textContent = `$${eproCost}`;
-  perListing.textContent = `($${eproRate}/listing)`;
-  displayVaCost.textContent = `$${vaCost}`;
-  displayToolSavings.textContent = `$${toolSavings}`;
-  displayTimeSavingsValue.textContent = `$${timeSavingsValue.toFixed(2)}`;
-  netBenefit.textContent = `$${benefit.toFixed(2)}`;
-  
-  // Show/hide VA cost row based on selection
-  vaCostRow.style.display = useVAYes.checked ? 'flex' : 'none';
-  
-  // Update benefit indicator (always positive for marketing purposes)
-  const benefitChangePct = 10; // Fixed for demonstration
-  benefitChangeIndicator.textContent = `↑ ${benefitChangePct}%`;
-  
-  // Update yearly calculations
-  yearlyNetBenefit.textContent = `$${yearlyBenefit.toFixed(2)}`;
-  yearlyTimeSaved.textContent = yearlyTimeSavedValue.toFixed(1);
-  vacationDays.textContent = workdaysSaved.toFixed(1);
-  
-  // Make sure the progress bar completes
-  calcProgress.style.width = '100%';
-}
-
-// Initial styling for radio buttons
-if (useVAYes.checked) {
-  vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    function calculateROI() {
+      // Get values from inputs
+      const listings = parseInt(listingsPerMonth.value) || 10;
+      const minutes = parseInt(minutesPerListing.value) || 60;
+      const vaListings = parseInt(vaListingsPerDay.value) || 5;
+      const vaSalaryValue = parseInt(vaSalary.value) || 250;
+      const hourlyRateValue = parseInt(hourlyRate.value) || 25;
+      const toolsCostValue = parseInt(toolsCost.value) || 30;
+      const eproRate = parseInt(eproAiPlan.value) || 2;
+      
+      // Calculate time savings
+      let currentHours, eproHours, timeSaved, monthlyListings;
+      
+      if (useVAYes.checked) {
+        // VA scenario - monthly listings are based on VA production
+        monthlyListings = vaListings * DAYS_PER_MONTH;
+        
+        // VA doesn't save time for owner, but we'll estimate it takes the VA 
+        // about 30 minutes per listing for comparison purposes
+        currentHours = 0; // Owner time is 0
+eproHours = (monthlyListings * EPRO_AI_MINUTES_PER_LISTING) / MINUTES_PER_HOUR;
+timeSaved = 0; // No direct time saved for owner
 } else {
-  vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+  // Owner does it themselves
+  monthlyListings = listings;
+  currentHours = (listings * minutes) / MINUTES_PER_HOUR;
+  eproHours = (listings * EPRO_AI_MINUTES_PER_LISTING) / MINUTES_PER_HOUR;
+  timeSaved = currentHours - eproHours;
 }
 
-// Fix for radio button styling - since we're using custom styling
-document.querySelectorAll('input[name="useVA"]').forEach(radio => {
-  radio.addEventListener('click', function() {
-    if (this.value === 'yes') {
-      vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-      vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-      vaRateContainer.classList.remove('hidden');
-      vaListingsPerDayContainer.classList.remove('hidden');
-      minutesPerListingContainer.classList.add('hidden');
-      hourlyRateContainer.classList.add('hidden');
-    } else {
-      vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-      vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-      vaRateContainer.classList.add('hidden');
-      vaListingsPerDayContainer.classList.add('hidden');
-      minutesPerListingContainer.classList.remove('hidden');
-      hourlyRateContainer.classList.remove('hidden');
-    }
-    showRecalculating();
-    setTimeout(calculateROI, 500);
-  });
+// Calculate cost savings
+const eproCost = monthlyListings * eproRate;
+let vaCost = useVAYes.checked ? vaSalaryValue : 0;
+const toolSavings = toolsCostValue;
+const timeSavingsValue = timeSaved * hourlyRateValue;
+
+// Calculate net benefit
+let benefit;
+
+if (useVAYes.checked) {
+  // For VA users, benefit = VA cost + tool savings - ePro AI cost
+  benefit = vaCost + toolSavings - eproCost;
+} else {
+  // For self-doers, benefit = time savings value + tool savings - ePro AI cost
+  benefit = timeSavingsValue + toolSavings - eproCost;
+}
+
+// Annual calculations
+const yearlyBenefit = benefit * MONTHS_PER_YEAR;
+const yearlyTimeSavedValue = timeSaved * MONTHS_PER_YEAR;
+const workdaysSaved = yearlyTimeSavedValue / HOURS_PER_WORKDAY;
+
+// Update DOM with calculated values
+displayMonthlyListings.textContent = monthlyListings;
+displayCurrentHours.textContent = currentHours.toFixed(1);
+displayEproHours.textContent = eproHours.toFixed(1);
+displayTimeSaved.textContent = timeSaved.toFixed(1);
+
+const timeChangePercentage = currentHours > 0 ? (timeSaved / currentHours * 100).toFixed(0) : 0;
+timeChangeIndicator.textContent = `↑ ${timeChangePercentage}%`;
+
+displayEproCost.textContent = `$${eproCost}`;
+perListing.textContent = `($${eproRate}/listing)`;
+displayVaCost.textContent = `$${vaCost}`;
+displayToolSavings.textContent = `$${toolSavings}`;
+displayTimeSavingsValue.textContent = `$${timeSavingsValue.toFixed(2)}`;
+netBenefit.textContent = `$${benefit.toFixed(2)}`;
+
+// Show/hide VA cost row based on selection
+vaCostRow.style.display = useVAYes.checked ? 'flex' : 'none';
+
+// Update benefit indicator (always positive for marketing purposes)
+const benefitChangePct = 10; // Fixed for demonstration
+benefitChangeIndicator.textContent = `↑ ${benefitChangePct}%`;
+
+// Update yearly calculations
+yearlyNetBenefit.textContent = `$${yearlyBenefit.toFixed(2)}`;
+yearlyTimeSaved.textContent = yearlyTimeSavedValue.toFixed(1);
+vacationDays.textContent = workdaysSaved.toFixed(1);
+
+// Make sure the progress bar completes
+calcProgress.style.width = '100%';
+}
+
+// Event listeners for inputs
+listingsPerMonth.addEventListener('input', function() {
+  showRecalculating();
+  setTimeout(calculateROI, 300);
 });
 
-// Add some wow factor with input animations
-const inputElements = document.querySelectorAll('input, select');
-inputElements.forEach(input => {
-  input.addEventListener('focus', function() {
-    this.closest('div.transition-all').classList.add('shadow-md', 'scale-102');
-  });
-  
-  input.addEventListener('blur', function() {
-    this.closest('div.transition-all').classList.remove('shadow-md', 'scale-102');
-  });
+minutesPerListing.addEventListener('input', function() {
+  showRecalculating();
+  setTimeout(calculateROI, 300);
+});
+
+vaListingsPerDay.addEventListener('input', function() {
+  showRecalculating();
+  setTimeout(calculateROI, 300);
+});
+
+vaSalary.addEventListener('input', function() {
+  showRecalculating();
+  setTimeout(calculateROI, 300);
+});
+
+hourlyRate.addEventListener('input', function() {
+  showRecalculating();
+  setTimeout(calculateROI, 300);
+});
+
+toolsCost.addEventListener('input', function() {
+  showRecalculating();
+  setTimeout(calculateROI, 300);
+});
+
+eproAiPlan.addEventListener('change', function() {
+  showRecalculating();
+  setTimeout(calculateROI, 300);
+});
+
+// Fix for radio button styling and functionality
+useVAYes.addEventListener('change', function() {
+  if (this.checked) {
+    vaRateContainer.classList.remove('hidden');
+    vaListingsPerDayContainer.classList.remove('hidden');
+    minutesPerListingContainer.classList.add('hidden');
+    hourlyRateContainer.classList.add('hidden');
+    
+    vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    
+    showRecalculating();
+    setTimeout(calculateROI, 300);
+  }
+});
+
+useVANo.addEventListener('change', function() {
+  if (this.checked) {
+    vaRateContainer.classList.add('hidden');
+    vaListingsPerDayContainer.classList.add('hidden');
+    minutesPerListingContainer.classList.remove('hidden');
+    hourlyRateContainer.classList.remove('hidden');
+    
+    vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+    
+    showRecalculating();
+    setTimeout(calculateROI, 300);
+  }
 });
 
 // Add "HOLY CRAP" notification when savings are massive
@@ -1438,9 +1429,23 @@ function checkForAmazingSavings() {
   }
 }
 
-// Check for amazing savings after calculating
-calculateROI();
-setTimeout(checkForAmazingSavings, 1000);
+// Add some wow factor with input animations
+const inputElements = document.querySelectorAll('input, select');
+inputElements.forEach(input => {
+  input.addEventListener('focus', function() {
+    const container = this.closest('div.transition-all');
+    if (container) {
+      container.classList.add('shadow-md');
+    }
+  });
+  
+  input.addEventListener('blur', function() {
+    const container = this.closest('div.transition-all');
+    if (container) {
+      container.classList.remove('shadow-md');
+    }
+  });
+});
 
 // Easter egg - clicking the progress bar
 calcProgress.addEventListener('click', function() {
@@ -1449,6 +1454,11 @@ calcProgress.addEventListener('click', function() {
     this.classList.remove('animate-pulse');
   }, 1000);
 });
+
+// Initial calculation
+calculateROI();
+setTimeout(checkForAmazingSavings, 1000);        
+timeSaved = 0; // No direct time saved for owner
 <!-- Process Showcase Section -->
 <section id="process-showcase" class="py-20 bg-[#F3F1E8] px-6">
   <div class="container mx-auto max-w-6xl">
