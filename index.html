@@ -10,6 +10,11 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Required libraries for Before/After effect -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/css/twentytwenty.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.event.move/2.0.0/jquery.event.move.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/js/jquery.twentytwenty.min.js"></script>
 
   <!-- Before/After Effect - Using CDN for all required libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twentytwenty/1.0.0/css/twentytwenty.min.css">
@@ -1299,38 +1304,7 @@
         Drag the slider to see the dramatic difference ePro AI makes to your listings
       </p>
     </div>
-      <script>
-      $(document).ready(function() {
-        // Make sure jQuery and twentytwenty plugin are loaded before this runs
-        if (typeof $.fn.twentytwenty === 'function') {
-          $(".twentytwenty-container").twentytwenty({
-            default_offset_pct: 0.5,
-            orientation: 'horizontal',
-            before_label: 'Before',
-            after_label: 'After',
-            no_overlay: false,
-            move_slider_on_hover: true, // Makes the slider respond to mouse movement
-            click_to_move: true // Allows clicking anywhere to move the slider
-          });
-          
-          // Add instruction callout 
-          setTimeout(function() {
-            const callout = document.createElement('div');
-            callout.className = 'bg-gradient-to-r from-[#F56400] to-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-md animate-pulse whitespace-nowrap z-20';
-            callout.innerHTML = '← Drag slider →';
-            callout.style.pointerEvents = 'none';
-            document.querySelector('.twentytwenty-container').appendChild(callout);
-            
-            // Fade out after 3 seconds
-            setTimeout(function() {
-              callout.classList.add('opacity-0', 'transition-opacity', 'duration-1000');
-            }, 3000);
-          }, 1000);
-        } else {
-          console.error('TwentyTwenty plugin not loaded!');
-        }
-      });
-    </script>
+
     <!-- Before/After Image Container with Gradient Effects -->
     <div class="relative rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-all duration-500 max-w-4xl mx-auto">
       <!-- Gradient border that appears on hover -->
@@ -1344,15 +1318,6 @@
         <!-- After Image -->
         <img src="after.jpg" alt="Professional studio quality photo" class="w-full rounded-xl">
       </div>
-      
-      <!-- Before/After Labels with Gradient -->
-      <div class="absolute left-4 top-4 bg-white bg-opacity-90 px-3 py-1 rounded-full text-sm font-medium shadow-sm z-10 group-hover:bg-gradient-to-r group-hover:from-[#F56400] group-hover:to-[#F56400] group-hover:text-white transition-all duration-300">
-        Before
-      </div>
-      
-      <div class="absolute right-4 top-4 bg-gradient-to-r from-[#F56400] to-yellow-500 px-3 py-1 rounded-full text-sm font-medium text-white shadow-sm z-10 group-hover:scale-110 transition-transform duration-300">
-        After AI
-      </div>
     </div>
     
     <!-- Additional information below the slider -->
@@ -1362,6 +1327,56 @@
       </div>
     </div>
   </div>
+
+  <!-- jQuery and TwentyTwenty plugin scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if jQuery and TwentyTwenty are loaded
+      if (typeof $ === 'function' && typeof $.fn.twentytwenty === 'function') {
+        // Initialize on DOM ready
+        $(".twentytwenty-container").twentytwenty({
+          default_offset_pct: 0.5,
+          orientation: 'horizontal',
+          before_label: 'Before',
+          after_label: 'After',
+          no_overlay: false,
+          move_slider_on_hover: true,
+          click_to_move: true
+        });
+        
+        // Add instruction callout 
+        setTimeout(function() {
+          const callout = document.createElement('div');
+          callout.className = 'bg-gradient-to-r from-[#F56400] to-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-md animate-pulse whitespace-nowrap z-20';
+          callout.innerHTML = '← Drag slider →';
+          callout.style.pointerEvents = 'none';
+          document.querySelector('.twentytwenty-container').appendChild(callout);
+          
+          // Fade out after 3 seconds
+          setTimeout(function() {
+            callout.classList.add('opacity-0', 'transition-opacity', 'duration-1000');
+          }, 3000);
+        }, 1000);
+      } else {
+        console.error('jQuery or TwentyTwenty plugin not loaded!');
+      }
+    });
+
+    // Also initialize on window load to ensure images are fully loaded
+    window.addEventListener('load', function() {
+      if (typeof $ === 'function' && typeof $.fn.twentytwenty === 'function') {
+        $(".twentytwenty-container").twentytwenty({
+          default_offset_pct: 0.5,
+          orientation: 'horizontal',
+          before_label: 'Before',
+          after_label: 'After',
+          no_overlay: false,
+          move_slider_on_hover: true,
+          click_to_move: true
+        });
+      }
+    });
+  </script>
 </section>
 
 <!-- Make sure you have the TwentyTwenty initialization script somewhere in your page -->
