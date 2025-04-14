@@ -1824,20 +1824,22 @@
       vaNoLabel.classList.toggle('border-[#F56400]', !isVAMode);
     }
     
-    // Show/hide VA specific fields
-    if (vaRateContainer) vaRateContainer.classList.toggle('hidden', !isVAMode);
-    if (vaListingsPerMonthContainer) vaListingsPerMonthContainer.classList.toggle('hidden', !isVAMode);
-    
-    // Show/hide owner specific fields
-    if (minutesPerListingContainer) minutesPerListingContainer.classList.toggle('hidden', isVAMode);
-    if (hourlyRateContainer) hourlyRateContainer.classList.toggle('hidden', isVAMode);
-    
-    // Show/hide sections
-    if (timeAnalysisSection) timeAnalysisSection.style.display = isVAMode ? 'none' : 'block';
-    if (timeSavingsValueRow) timeSavingsValueRow.style.display = isVAMode ? 'none' : 'flex';
-    if (yearlyTimeRow) yearlyTimeRow.style.display = isVAMode ? 'none' : 'flex';
-    if (vacationDaysRow) vacationDaysRow.style.display = isVAMode ? 'none' : 'block';
-    if (vaCostRow) vaCostRow.style.display = isVAMode ? 'flex' : 'none';
+// Show/hide VA specific fields
+if (vaRateContainer) vaRateContainer.classList.toggle('hidden', !isVAMode);
+if (vaListingsPerMonthContainer) vaListingsPerMonthContainer.classList.toggle('hidden', !isVAMode);
+
+// Show/hide owner specific fields
+if (minutesPerListingContainer) minutesPerListingContainer.classList.toggle('hidden', isVAMode);
+if (hourlyRateContainer) hourlyRateContainer.classList.toggle('hidden', isVAMode);
+// Add this line to hide the listings per month field when in VA mode
+if (listingsPerMonth) listingsPerMonth.parentElement.parentElement.classList.toggle('hidden', isVAMode);
+
+// Show/hide sections
+if (timeAnalysisSection) timeAnalysisSection.style.display = isVAMode ? 'none' : 'block';
+if (timeSavingsValueRow) timeSavingsValueRow.style.display = isVAMode ? 'none' : 'flex';
+if (yearlyTimeRow) yearlyTimeRow.style.display = isVAMode ? 'none' : 'flex';
+if (vacationDaysRow) vacationDaysRow.style.display = isVAMode ? 'none' : 'block';
+if (vaCostRow) vaCostRow.style.display = isVAMode ? 'flex' : 'none';
   }
 
   // Add event listeners for form inputs
