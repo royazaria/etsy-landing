@@ -1699,7 +1699,7 @@
                     <div class="relative">
                       <span class="font-bold text-2xl text-[#F56400]" id="netBenefit">$252.50</span>
                       <span id="benefitChangeIndicator" class="absolute -top-4 right-0 text-green-500 text-sm font-medium">
-                        ↑ 10%
+                        ↑ 95%
                       </span>
                     </div>
                   </div>
@@ -1836,10 +1836,10 @@
       let currentHours, eproHours, timeSaved, monthlyListings;
       
       if (useVAYes && useVAYes.checked) {
-        // VA scenario - monthly listings are based on VA production
-        monthlyListings = vaListings * DAYS_PER_MONTH;
+        // VA scenario - monthly listings are directly from input when VA is used
+        monthlyListings = listings; // Use the user's input value directly
         
-        // VA doesn't save time for owner
+      // VA doesn't save time for owner
         currentHours = 0; 
         eproHours = (monthlyListings * EPRO_AI_MINUTES_PER_LISTING) / MINUTES_PER_HOUR;
         timeSaved = 0; 
@@ -1892,9 +1892,13 @@
       // Show/hide VA cost row based on selection
       if (vaCostRow) vaCostRow.style.display = (useVAYes && useVAYes.checked) ? 'flex' : 'none';
       
-      // Update benefit indicator
-      const benefitChangePct = 10; // Fixed for demonstration
-      if (benefitChangeIndicator) benefitChangeIndicator.textContent = `↑ ${benefitChangePct}%`;
+      // Update benefit indicator - FIXED
+      if (benefitChangeIndicator) {
+        const previousCost = vaCost + toolsCostValue + (currentHours * hourlyRateValue);
+        const newCost = eproCost;
+        const savingsPercent = previousCost > 0 ? Math.round((previousCost - newCost) / previousCost * 100) : 0;
+        benefitChangeIndicator.textContent = `↑ ${savingsPercent}%`;
+      }
       
       // Update yearly calculations
       if (yearlyNetBenefit) yearlyNetBenefit.textContent = `$${yearlyBenefit.toFixed(2)}`;
@@ -1938,6 +1942,11 @@
           if (vaYesLabel) vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
           if (vaNoLabel) vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
           
+          // Hide time-related displays when VA is selected
+          if (displayCurrentHours) displayCurrentHours.parentElement.parentElement.style.display = 'none';
+          if (displayEproHours) displayEproHours.parentElement.parentElement.style.display = 'none';
+          if (displayTimeSaved) displayTimeSaved.parentElement.parentElement.parentElement.style.display = 'none';
+          
           showRecalculating();
           setTimeout(calculateROI, 300);
         }
@@ -1954,6 +1963,11 @@
           
           if (vaYesLabel) vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
           if (vaNoLabel) vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+          
+          // Show time-related displays when VA is not selected
+          if (displayCurrentHours) displayCurrentHours.parentElement.parentElement.style.display = 'flex';
+          if (displayEproHours) displayEproHours.parentElement.parentElement.style.display = 'flex';
+          if (displayTimeSaved) displayTimeSaved.parentElement.parentElement.parentElement.style.display = 'flex';
           
           showRecalculating();
           setTimeout(calculateROI, 300);
@@ -2336,7 +2350,6 @@
       <div>
         <h3 class="text-lg font-bold mb-4">Product</h3>
          <ul class="space-y-2">
-          <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
           <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
           <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
           <li><a href="#faq-section" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
