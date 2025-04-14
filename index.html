@@ -1939,61 +1939,74 @@
       });
     }
     
-    if (useVAYes) {
-      useVAYes.addEventListener('change', function() {
-        if (this.checked) {
-          if (vaRateContainer) vaRateContainer.classList.remove('hidden');
-          if (vaListingsPerDayContainer) vaListingsPerDayContainer.classList.remove('hidden');
-          if (minutesPerListingContainer) minutesPerListingContainer.classList.add('hidden');
-          if (hourlyRateContainer) hourlyRateContainer.classList.add('hidden');
-          
-          if (vaYesLabel) vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-          if (vaNoLabel) vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-          
-          // Hide time-related displays when VA is selected
-          if (displayCurrentHours) displayCurrentHours.parentElement.parentElement.style.display = 'none';
-          if (displayEproHours) displayEproHours.parentElement.parentElement.style.display = 'none';
-          if (displayTimeSaved) displayTimeSaved.parentElement.parentElement.parentElement.style.display = 'none';
-          
-          showRecalculating();
-          setTimeout(calculateROI, 300);
-        }
-      });
+if (useVAYes) {
+  useVAYes.addEventListener('change', function() {
+    if (this.checked) {
+      // Show VA-specific fields
+      if (vaRateContainer) vaRateContainer.classList.remove('hidden');
+      if (vaListingsPerDayContainer) vaListingsPerDayContainer.classList.remove('hidden');
+      
+      // Hide owner-specific fields
+      if (minutesPerListingContainer) minutesPerListingContainer.classList.add('hidden');
+      if (hourlyRateContainer) hourlyRateContainer.classList.add('hidden');
+      
+      // Hide time analysis section completely
+      const timeAnalysisSection = document.querySelector('.bg-white.p-4.rounded-lg.border.border-gray-100.shadow-sm:first-child');
+      if (timeAnalysisSection) {
+        timeAnalysisSection.classList.add('hidden');
+      }
+      
+      // Update UI
+      if (vaYesLabel) vaYesLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+      if (vaNoLabel) vaNoLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+      
+      showRecalculating();
+      setTimeout(calculateROI, 300);
     }
-    
-    if (useVANo) {
-      useVANo.addEventListener('change', function() {
-        if (this.checked) {
-          if (vaRateContainer) vaRateContainer.classList.add('hidden');
-          if (vaListingsPerDayContainer) vaListingsPerDayContainer.classList.add('hidden');
-          if (minutesPerListingContainer) minutesPerListingContainer.classList.remove('hidden');
-          if (hourlyRateContainer) hourlyRateContainer.classList.remove('hidden');
-          
-          if (vaYesLabel) vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-          if (vaNoLabel) vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
-          
-          // Show time-related displays when VA is not selected
-          // Show time-related displays when VA is not selected
-if (displayCurrentHours) {
-  displayCurrentHours.parentElement.parentElement.style.display = 'flex';
-  displayCurrentHours.parentElement.parentElement.style.padding = '0.5rem 0';
-  displayCurrentHours.parentElement.parentElement.style.marginBottom = '1rem';
+  });
 }
-if (displayEproHours) {
-  displayEproHours.parentElement.parentElement.style.display = 'flex';
-  displayEproHours.parentElement.parentElement.style.padding = '0.5rem 0';
-  displayEproHours.parentElement.parentElement.style.marginBottom = '1rem';
-}
-if (displayTimeSaved) {
-  displayTimeSaved.parentElement.parentElement.parentElement.style.display = 'flex';
-  displayTimeSaved.parentElement.parentElement.parentElement.style.paddingTop = '1rem';
-}
-          
-          showRecalculating();
-          setTimeout(calculateROI, 300);
-        }
-      });
+   if (useVANo) {
+  useVANo.addEventListener('change', function() {
+    if (this.checked) {
+      // Show owner-specific fields
+      if (minutesPerListingContainer) minutesPerListingContainer.classList.remove('hidden');
+      if (hourlyRateContainer) hourlyRateContainer.classList.remove('hidden');
+      
+      // Hide VA-specific fields
+      if (vaRateContainer) vaRateContainer.classList.add('hidden');
+      if (vaListingsPerDayContainer) vaListingsPerDayContainer.classList.add('hidden');
+      
+      // Show time analysis section
+      const timeAnalysisSection = document.querySelector('.bg-white.p-4.rounded-lg.border.border-gray-100.shadow-sm:first-child');
+      if (timeAnalysisSection) {
+        timeAnalysisSection.classList.remove('hidden');
+      }
+      
+      // Fix styling for time-related displays
+      if (displayCurrentHours) {
+        displayCurrentHours.parentElement.parentElement.style.display = 'flex';
+        displayCurrentHours.parentElement.parentElement.style.padding = '0.5rem 0';
+        displayCurrentHours.parentElement.parentElement.style.marginBottom = '1rem';
+      }
+      if (displayEproHours) {
+        displayEproHours.parentElement.parentElement.style.display = 'flex';
+        displayEproHours.parentElement.parentElement.style.padding = '0.5rem 0';
+        displayEproHours.parentElement.parentElement.style.marginBottom = '1rem';
+      }
+      if (displayTimeSaved) {
+        displayTimeSaved.parentElement.parentElement.parentElement.style.display = 'flex';
+        displayTimeSaved.parentElement.parentElement.parentElement.style.paddingTop = '1rem';
+      }
+      
+      // Update UI
+      if (vaYesLabel) vaYesLabel.classList.remove('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+      if (vaNoLabel) vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
+      
+      showRecalculating();
+      setTimeout(calculateROI, 300);
     }
+  });
+}
     
     if (vaSalary) {
       vaSalary.addEventListener('input', function() {
@@ -2042,29 +2055,31 @@ if (displayTimeSaved) {
       <!-- Founder story container -->
       <div class="md:flex">
         <!-- Founder image/video container - Left side -->
-        <div class="md:w-2/5 relative overflow-hidden">
-          <!-- Replace with actual founder image -->
-          <div class="aspect-square relative">
-            <img src="/api/placeholder/500/500" alt="Founder" class="w-full h-full object-cover opacity-90">
-            
-            <!-- Gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-[#F56400] to-transparent opacity-30"></div>
-            
-            <!-- Play button for future video -->
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-20 h-20 bg-gradient-to-r from-[#F56400] to-yellow-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300 shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                </svg>
+        <div class="md:w-2/5 relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800">
+          <div class="w-full h-full">
+            <div class="aspect-ratio-1/1 relative">
+              <img src="/api/placeholder/800/800" alt="Founder" class="w-full h-full object-cover">
+              
+              <!-- Gradient overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#F56400] to-transparent opacity-30"></div>
+              
+              <!-- Play button for future video -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-24 h-24 bg-gradient-to-r from-[#F56400] to-yellow-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300 shadow-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
               </div>
-            </div>
-            
-            <!-- Etsy seller badge -->
-            <div class="absolute bottom-4 left-4 bg-white bg-opacity-90 px-3 py-2 rounded-lg shadow-md flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#F56400] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span class="text-sm font-medium">$300,000+ in Etsy Sales</span>
+              
+              <!-- Etsy seller badge -->
+              <div class="absolute bottom-4 left-4 bg-white bg-opacity-90 px-3 py-2 rounded-lg shadow-md flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#F56400] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-sm font-medium">$300,000+ in Etsy Sales</span>
+              </div>
             </div>
           </div>
         </div>
