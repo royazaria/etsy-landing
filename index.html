@@ -191,14 +191,15 @@
     </a>
     
     <div class="hidden md:flex space-x-8">
-      <a href="#features" class="font-medium hover:text-[#F56400] transition-colors">Features</a>
-      <a href="#how-it-works" class="font-medium hover:text-[#F56400] transition-colors">How It Works</a>
-      <a href="#pricing" class="font-medium hover:text-[#F56400] transition-colors">Pricing</a>
-    </div>
+  <a href="#how-it-works" class="font-medium hover:text-[#F56400] transition-colors">How It Works</a>
+  <a href="#calculator-section" class="font-medium hover:text-[#F56400] transition-colors">Worth it?</a>
+  <a href="#pricing" class="font-medium hover:text-[#F56400] transition-colors">Pricing</a>
+  <a href="#faq-section" class="font-medium hover:text-[#F56400] transition-colors">FAQ</a>
+</div>
     
-    <a href="#early-access" class="bg-[#F56400] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#E45A00] transition-colors">
-      Join Beta Now
-    </a>
+    <a href="#early-access" class="bg-gradient-to-r from-[#F56400] to-yellow-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-gradient-to-r hover:from-[#E05000] hover:to-[#D48200] transition-all duration-300">
+  Join Beta Now
+</a>
   </div>
 </nav>
   
@@ -1390,6 +1391,7 @@
   });
 </script>
 <!-- ROI Calculator Section (SUPERCHARGED VERSION) -->
+  <section id="calculator-section" class="py-20 bg-gradient-to-b from-gray-50 to-white px-6">
 <section class="py-20 bg-gradient-to-b from-gray-50 to-white px-6">
   <div class="container mx-auto max-w-5xl">
     <div class="text-center mb-12">
@@ -1628,11 +1630,11 @@
               </h3>
 
               <div class="space-y-6">
-                <!-- Time Savings -->
-<div class="bg-white p-6 rounded-lg border border-gray-100 shadow-sm">
-  <p class="text-lg font-medium text-gray-800 mb-4">Time Analysis</p>
+<!-- Time Savings -->
+<div class="bg-white p-8 rounded-lg border border-gray-100 shadow-sm">
+  <p class="text-lg font-medium text-gray-800 mb-5">Time Analysis</p>
   
-  <div class="flex justify-between items-center mb-4">
+  <div class="flex justify-between items-center mb-6">
     <span class="text-gray-600">Current hours per month:</span>
     <div class="flex items-center">
       <span class="font-bold text-xl" id="displayCurrentHours">10</span>
@@ -1640,7 +1642,7 @@
     </div>
   </div>
   
-  <div class="flex justify-between items-center mb-4">
+  <div class="flex justify-between items-center mb-6">
     <span class="text-gray-600">Hours with ePro AI:</span>
     <div class="flex items-center">
       <span class="font-bold text-xl text-[#F56400]" id="displayEproHours">0.3</span>
@@ -1648,7 +1650,7 @@
     </div>
   </div>
   
-  <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+  <div class="flex justify-between items-center pt-6 border-t border-gray-100">
     <span class="text-gray-700 font-medium">Time saved monthly:</span>
     <div class="relative">
       <span class="font-bold text-xl text-green-600" id="displayTimeSaved">9.7</span>
@@ -1658,7 +1660,7 @@
       </span>
     </div>
   </div>
-</div>  </div>
+</div>
                 
                 <!-- Cost Savings -->
                 <div class="bg-white p-4 rounded-lg border border-gray-100 shadow-sm">
@@ -1963,9 +1965,21 @@
           if (vaNoLabel) vaNoLabel.classList.add('bg-[#F56400]', 'text-white', 'border-[#F56400]');
           
           // Show time-related displays when VA is not selected
-          if (displayCurrentHours) displayCurrentHours.parentElement.parentElement.style.display = 'flex';
-          if (displayEproHours) displayEproHours.parentElement.parentElement.style.display = 'flex';
-          if (displayTimeSaved) displayTimeSaved.parentElement.parentElement.parentElement.style.display = 'flex';
+          // Show time-related displays when VA is not selected
+if (displayCurrentHours) {
+  displayCurrentHours.parentElement.parentElement.style.display = 'flex';
+  displayCurrentHours.parentElement.parentElement.style.padding = '0.5rem 0';
+  displayCurrentHours.parentElement.parentElement.style.marginBottom = '1rem';
+}
+if (displayEproHours) {
+  displayEproHours.parentElement.parentElement.style.display = 'flex';
+  displayEproHours.parentElement.parentElement.style.padding = '0.5rem 0';
+  displayEproHours.parentElement.parentElement.style.marginBottom = '1rem';
+}
+if (displayTimeSaved) {
+  displayTimeSaved.parentElement.parentElement.parentElement.style.display = 'flex';
+  displayTimeSaved.parentElement.parentElement.parentElement.style.paddingTop = '1rem';
+}
           
           showRecalculating();
           setTimeout(calculateROI, 300);
@@ -2020,7 +2034,7 @@
       <!-- Founder story container -->
       <div class="md:flex">
         <!-- Founder image/video container - Left side -->
-        <div class="md:w-2/5 relative overflow-hidden 
+        <div class="md:w-2/5 relative overflow-hidden">
           <!-- Replace with actual founder image -->
           <div class="aspect-square relative">
             <img src="/api/placeholder/500/500" alt="Founder" class="w-full h-full object-cover opacity-90">
@@ -2030,8 +2044,8 @@
             
             <!-- Play button for future video -->
             <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-16 h-16 bg-gradient-to-r from-[#F56400] to-yellow-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300 shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
+              <div class="w-20 h-20 bg-gradient-to-r from-[#F56400] to-yellow-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300 shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                 </svg>
               </div>
@@ -2319,15 +2333,15 @@
     </div>
     
     <!-- FAQ Summary Call to Action -->
-    <div class="mt-16 text-center">
-      <div class="inline-block bg-[#F3F1E8] px-8 py-6 rounded-xl border-l-4 border-[#F56400]">
-        <h3 class="text-xl font-bold mb-2">Still have questions?</h3>
-        <p class="text-gray-700 mb-4">Our support team is ready to help you get started</p>
-        <a href="#early-access" class="inline-block bg-gradient-to-r from-[#F56400] to-yellow-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
-          Contact Support
-        </a>
-      </div>
-    </div>
+<div class="mt-16 text-center">
+  <div class="inline-block bg-[#F3F1E8] px-8 py-6 rounded-xl border-l-4 border-[#F56400]">
+    <h3 class="text-xl font-bold mb-2">Still have questions?</h3>
+    <p class="text-gray-700 mb-4">Our support team is ready to help you get started</p>
+    <a href="mailto:aetophis@aetophis.com" class="inline-block bg-gradient-to-r from-[#F56400] to-yellow-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
+      Contact Support
+    </a>
+  </div>
+</div>
   </div>
 </section>
 <!-- Footer -->
