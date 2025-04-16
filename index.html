@@ -2075,13 +2075,6 @@ if (vaCostRow) vaCostRow.style.display = isVAMode ? 'flex' : 'none';
   name="full_name" 
   required 
 />
-
-<input 
-  type="email" 
-  id="email" 
-  name="email" 
-  required 
-/>
             placeholder="you@example.com" 
             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F56400] focus:border-transparent transition-all"
           />
@@ -2267,15 +2260,15 @@ if (vaCostRow) vaCostRow.style.display = isVAMode ? 'flex' : 'none';
         </ul>
       </div>
       
-      <div>
-        <h3 class="text-lg font-bold mb-4">Legal</h3>
-        <ul class="space-y-2">
-          <li><a href="./terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-          <li><a href="./privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-          <li><a href="./refund.html" class="text-gray-400 hover:text-white transition-colors">Refund Policy</a></li>
-          <li><a href="mailto:aetophis@aetophis.com" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
-        </ul>
-      </div>
+     <div>
+  <h3 class="text-lg font-bold mb-4">Legal</h3>
+  <ul class="space-y-2">
+    <li><a href="terms-of-service.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+    <li><a href="privacy-policy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+    <li><a href="refund-policy.html" class="text-gray-400 hover:text-white transition-colors">Refund Policy</a></li>
+    <li><a href="mailto:support@eproai.com" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+  </ul>
+</div>
     </div>
     
     <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
@@ -2286,7 +2279,6 @@ if (vaCostRow) vaCostRow.style.display = isVAMode ? 'flex' : 'none';
 <!-- Scripts - Placed at the end to avoid blocking page rendering -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Typed.js initialization
     new Typed('#typed-headline', {
       strings: [
         'COMPLETE ETSY LISTINGS FROM ONE PHOTO', 
@@ -2299,17 +2291,18 @@ if (vaCostRow) vaCostRow.style.display = isVAMode ? 'flex' : 'none';
       loop: true
     });
 
-    // TwentyTwenty initialization - Make sure this runs AFTER the images have loaded
     $(window).on('load', function() {
       $(".twentytwenty-container").twentytwenty({
-        default_offset_pct: 0.5, // How much of the "before" image is visible when the page loads
-        orientation: 'horizontal', // Orientation of the before and after images ('horizontal' or 'vertical')
-        before_label: 'Before', // Set a custom before label
-        after_label: 'After', // Set a custom after label
-        no_overlay: false // Do not show the overlay with before and after
+        default_offset_pct: 0.5,
+        orientation: 'horizontal',
+        before_label: 'Before',
+        after_label: 'After',
+        no_overlay: false
       });
     });
   });
+</script>
+
 <script>
   function handleLandingSignup(event) {
     event.preventDefault();
